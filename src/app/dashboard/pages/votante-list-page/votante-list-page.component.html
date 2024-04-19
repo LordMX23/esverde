@@ -1,0 +1,37 @@
+<h1>Listado de Votantes</h1>
+<mat-divider></mat-divider>
+<br><br>
+
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Telefono</th>
+                <th scope="col">Seccion</th>
+                <th scope="col">Domicilio</th>
+                <th scope="col">Editar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let votante of votantes">
+
+                <th scope="row">
+                    {{ votante.nombre }}
+                </th>
+                <td>
+                    {{ votante.telefono }}
+                </td>
+                <td>
+                    {{ votante.seccion }}
+                </td>
+                <td>
+                    {{ votante.domilio }}
+                </td>
+                <td>
+                    {{ votante.id }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

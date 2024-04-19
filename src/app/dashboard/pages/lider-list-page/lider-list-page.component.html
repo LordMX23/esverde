@@ -1,0 +1,40 @@
+<h1>Listado de Lideres</h1>
+<mat-divider></mat-divider>
+<br><br>
+
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Telefono</th>
+                <th scope="col">Seccion</th>
+                <th scope="col">Editar</th>
+                <th scope="col">Votantes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let lider of lideres">
+
+                <th scope="row">
+                    {{ lider.nombre }}
+                </th>
+                <td>
+                    {{ lider.telefono }}
+                </td>
+                <td>
+                    {{ lider.seccion }}
+                </td>
+                <td>
+                    {{ lider.id }}
+                </td>
+                <td>
+                    <button mat-button mat-raised color="primary" [routerLink]="['/dashboard/vlist', lider.id]">
+                        <mat-icon>search</mat-icon>
+                        Ver
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,43 @@
+<!-- <p>coordinador-list-page works!</p>
+{{ coordinadores | json}} -->
+
+<h1>Listado de Coordinadores</h1>
+<mat-divider></mat-divider>
+<br><br>
+
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Telefono</th>
+                <th scope="col">Seccion</th>
+                <th scope="col">Editar</th>
+                <th scope="col">Lideres</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let coordinador of coordinadores">
+
+                <th scope="row">
+                    {{ coordinador.nombre }}
+                </th>
+                <td>
+                    {{ coordinador.telefono }}
+                </td>
+                <td>
+                    {{ coordinador.seccion }}
+                </td>
+                <td>
+                    {{ coordinador.id }}
+                </td>
+                <td>
+                    <button mat-button mat-raised color="primary" [routerLink]="['/dashboard/llist', coordinador.id]">
+                        <mat-icon>search</mat-icon>
+                        Ver
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

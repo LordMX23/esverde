@@ -1,0 +1,32 @@
+<form [formGroup]="myForm" (ngSubmit)="login()" class="container">
+    
+    <legend>Login</legend>
+    
+    <div class="mb-3">
+    <mat-form-field>
+        <mat-label>Usuario</mat-label>
+        <input type="text" formControlName="usuario" matInput placeholder="Nombre de Usuario">
+    </mat-form-field>
+</div>
+
+
+<div class="mb-3">
+    <mat-form-field>
+        <mat-label>Contraseña</mat-label>
+        <input type="password" formControlName="password" matInput placeholder="Contraseña">
+    </mat-form-field>
+</div>
+
+
+    <button mat-button 
+        mat-flat-button color="primary"
+        [disabled]="myForm.invalid"
+        type="submit"
+        >
+        Ingresar
+    </button>
+
+    
+
+
+</form>
