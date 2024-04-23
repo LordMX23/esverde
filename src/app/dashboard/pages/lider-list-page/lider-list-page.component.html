@@ -26,7 +26,10 @@
                     {{ lider.seccion }}
                 </td>
                 <td>
-                    {{ lider.id }}
+                    <button mat-button mat-raised color="primary" [routerLink]="['/dashboard/lpage', lider.id]">
+                        <mat-icon>edit</mat-icon>
+                        Editar
+                    </button>
                 </td>
                 <td>
                     <button mat-button mat-raised color="primary" [routerLink]="['/dashboard/vlist', lider.id]">

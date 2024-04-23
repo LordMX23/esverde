@@ -5,6 +5,8 @@ import { CoordinadorListPageComponent } from './pages/coordinador-list-page/coor
 import { LiderListPageComponent } from './pages/lider-list-page/lider-list-page.component';
 import { VotanteListPageComponent } from './pages/votante-list-page/votante-list-page.component';
 import { ReportListPageComponent } from './pages/report-list-page/report-list-page.component';
+import { CoordinadorPageComponent } from './pages/coordinador-page/coordinador-page.component';
+import { LiderPageComponent } from './pages/lider-page/lider-page.component';
 
 const routes: Routes = [
   {
@@ -12,9 +14,9 @@ const routes: Routes = [
     component: LayoutPageComponent,
     children: [
       {path: 'clist', component: CoordinadorListPageComponent },
-      // {path: 'llist', component: LiderListPageComponent },
+      {path: 'cpage/:id', component: CoordinadorPageComponent },
       {path: 'llist/:id', component: LiderListPageComponent },
-      // {path: 'vlist', component: VotanteListPageComponent },
+      {path: 'lpage/:id', component: LiderPageComponent },
       {path: 'vlist/:id', component: VotanteListPageComponent },
       {path: 'rlist', component: ReportListPageComponent },
       { path: '**', redirectTo: 'clist' }

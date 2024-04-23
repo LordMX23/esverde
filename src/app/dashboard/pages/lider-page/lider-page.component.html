@@ -1,0 +1,39 @@
+<form [formGroup]="myForm" (ngSubmit)="updateLider()" class="container">
+
+    <hr>
+    <legend>Datos del Lider</legend>
+
+
+    <mat-form-field class="form-control">
+        <mat-label>Nombre</mat-label>
+        <input type="text" formControlName="nombre" matInput placeholder="Nombre">
+    </mat-form-field>
+
+    <mat-form-field class="form-control">
+        <mat-label>Telefono</mat-label>
+        <input type="text" formControlName="telefono" matInput placeholder="Telefono">
+    </mat-form-field>
+
+    <mat-form-field class="form-control">
+        <mat-label>Domicilio</mat-label>
+        <input type="text" formControlName="domicilio" matInput placeholder="Telefono">
+    </mat-form-field>
+
+    <mat-form-field class="form-control">
+        <mat-label>Referencia</mat-label>
+        <input type="text" formControlName="referenciadom" matInput placeholder="Telefono">
+    </mat-form-field>
+
+    <mat-form-field class="form-control">
+        <mat-label>Seccion</mat-label>
+        <input type="text" formControlName="seccion" matInput placeholder="Telefono">
+    </mat-form-field>
+
+
+    <button mat-button mat-flat-button color="primary" [disabled]="myForm.invalid" type="submit">
+        Guardar
+    </button>
+    <button mat-button color="warn" (click)="goBack()">
+        Regresar
+    </button>
+</form>

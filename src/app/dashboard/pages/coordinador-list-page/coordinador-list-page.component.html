@@ -29,7 +29,10 @@
                     {{ coordinador.seccion }}
                 </td>
                 <td>
-                    {{ coordinador.id }}
+                    <button mat-button mat-raised color="primary" [routerLink]="['/dashboard/cpage', coordinador.id]">
+                        <mat-icon>edit</mat-icon>
+                        Editar
+                    </button>
                 </td>
                 <td>
                     <button mat-button mat-raised color="primary" [routerLink]="['/dashboard/llist', coordinador.id]">

@@ -5,6 +5,7 @@ import { CoordinadorResponse } from '../interfaces/coordinador-response.interfac
 import { catchError, Observable, of, tap } from 'rxjs';
 import { LiderResponse } from '../interfaces/lider-response.interface';
 import { VotanteResponse } from '../interfaces/votante-response.interface';
+import { CoordinadorUpdate } from '../interfaces/coordinador-update.interface';
 
 @Injectable({providedIn: 'root'})
 export class StructureService {
@@ -14,7 +15,8 @@ export class StructureService {
 
     constructor() { }
 
-    getCoordinador(id : string,id_perfil: string, id_p: string ): Observable<CoordinadorResponse[]>
+    // Coordinador
+    getCoordinadorList(id : string,id_perfil: string, id_p: string ): Observable<CoordinadorResponse[]>
     {
         const url = `${this.baseUrl}/Registros/Top`;
         const token = localStorage.getItem('token');
@@ -37,6 +39,51 @@ export class StructureService {
 
     }
 
+    getCoordinadorById(id : string): Observable<CoordinadorResponse[]>
+    {
+        const url = `${this.baseUrl}/Registros/GetCoordinadorById?Id=${id.toString()}`;
+        const token = localStorage.getItem('token');
+        const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+        
+
+        return this.http.post<CoordinadorResponse[]>(url,'', { headers })
+        .pipe(
+            catchError(() => {
+                return of();
+            })
+        );
+        
+
+    }
+
+    UpdateCoordinadorById( coor: CoordinadorUpdate)
+    {
+        const url = `${this.baseUrl}/Registros/CoordinadorApp`;
+        const token = localStorage.getItem('token');
+        const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+        
+        const body = {
+            'id_candidato' : coor.id_candidato,
+            'nombre': coor.nombre,
+            'telefono': coor.telefono,
+            'inefrente': coor.inefrente,
+            'ocr': coor.ocr,
+            'id_user':  Number( localStorage.getItem('idUsuario') ),
+            'operacion': coor.operacion,
+            'id_coordinador': coor.id_coordinador
+        };
+
+        return this.http.post(url, body, { headers })
+        .pipe(
+            catchError(() => {
+                return of('Se presento un error, contacte al administrador.');
+            })
+        );
+
+    }
+
+
+    // Lider
     getLider(id : string,id_perfil: string, id_p: string ): Observable<LiderResponse[]>
     {
         const url = `${this.baseUrl}/Registros/Top`;
@@ -54,6 +101,8 @@ export class StructureService {
 
     }
 
+    // Votante
+
     getVotante(id : string,id_perfil: string, id_p: string ): Observable<VotanteResponse[]>
     {
         const url = `${this.baseUrl}/Registros/Top`;
@@ -70,5 +119,7 @@ export class StructureService {
         
 
     }
+
+    
     
 }

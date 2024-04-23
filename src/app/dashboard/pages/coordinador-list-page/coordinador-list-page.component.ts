@@ -15,7 +15,7 @@ export class CoordinadorListPageComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.structureService.getCoordinador("1","1","1")
+    this.structureService.getCoordinadorList("1","1","1")
     .subscribe(coordi => this.coordinadores = coordi);
   }
 

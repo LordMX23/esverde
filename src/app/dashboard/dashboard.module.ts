@@ -8,6 +8,9 @@ import { MaterialModule } from '../material/material.module';
 import { LiderListPageComponent } from './pages/lider-list-page/lider-list-page.component';
 import { VotanteListPageComponent } from './pages/votante-list-page/votante-list-page.component';
 import { ReportListPageComponent } from './pages/report-list-page/report-list-page.component';
+import { CoordinadorPageComponent } from './pages/coordinador-page/coordinador-page.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { LiderPageComponent } from './pages/lider-page/lider-page.component';
 
 
 @NgModule({
@@ -16,12 +19,15 @@ import { ReportListPageComponent } from './pages/report-list-page/report-list-pa
     CoordinadorListPageComponent,
     LiderListPageComponent,
     VotanteListPageComponent,
-    ReportListPageComponent
+    ReportListPageComponent,
+    CoordinadorPageComponent,
+    LiderPageComponent
   ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ]
 })
 export class DashboardModule { }
