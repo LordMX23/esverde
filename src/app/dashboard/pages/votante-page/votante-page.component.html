@@ -1,7 +1,7 @@
-<form [formGroup]="myForm" (ngSubmit)="updateLider()" class="container">
+<form [formGroup]="myForm" (ngSubmit)="updateVotante()" class="container">
 
     <hr>
-    <legend>Datos del Lider</legend>
+    <legend>Datos del Votate</legend>
 
 
     <mat-form-field class="form-control">
@@ -28,6 +28,13 @@
         <mat-label>Seccion</mat-label>
         <input type="text" formControlName="seccion" matInput placeholder="Seccion">
     </mat-form-field>
+
+    <section  class="form-control">
+    <mat-slide-toggle formControlName="traslado" class="example-margin" [color]="color" [checked]="checked"
+        [disabled]="disabled">
+        Traslado!
+    </mat-slide-toggle>
+</section>
 
     <button mat-button mat-flat-button color="primary" [disabled]="myForm.invalid" type="submit">
         Guardar

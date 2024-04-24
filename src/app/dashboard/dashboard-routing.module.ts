@@ -7,6 +7,7 @@ import { VotanteListPageComponent } from './pages/votante-list-page/votante-list
 import { ReportListPageComponent } from './pages/report-list-page/report-list-page.component';
 import { CoordinadorPageComponent } from './pages/coordinador-page/coordinador-page.component';
 import { LiderPageComponent } from './pages/lider-page/lider-page.component';
+import { VotantePageComponent } from './pages/votante-page/votante-page.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,7 @@ const routes: Routes = [
       {path: 'llist/:id', component: LiderListPageComponent },
       {path: 'lpage/:id', component: LiderPageComponent },
       {path: 'vlist/:id', component: VotanteListPageComponent },
+      {path: 'vpage/:id', component: VotantePageComponent },
       {path: 'rlist', component: ReportListPageComponent },
       { path: '**', redirectTo: 'clist' }
     ]

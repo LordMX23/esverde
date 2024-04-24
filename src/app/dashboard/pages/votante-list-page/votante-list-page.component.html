@@ -29,9 +29,15 @@
                     {{ votante.domilio }}
                 </td>
                 <td>
-                    {{ votante.id }}
+                    <button mat-button mat-raised color="primary" [routerLink]="['/dashboard/vpage', votante.id]">
+                        <mat-icon>edit</mat-icon>
+                        Editar
+                    </button>
                 </td>
             </tr>
         </tbody>
     </table>
 </div>
+<button mat-button color="warn" (click)="goBack()">
+    Regresar
+</button>

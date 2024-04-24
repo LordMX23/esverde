@@ -11,6 +11,7 @@ import { ReportListPageComponent } from './pages/report-list-page/report-list-pa
 import { CoordinadorPageComponent } from './pages/coordinador-page/coordinador-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LiderPageComponent } from './pages/lider-page/lider-page.component';
+import { VotantePageComponent } from './pages/votante-page/votante-page.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { LiderPageComponent } from './pages/lider-page/lider-page.component';
     VotanteListPageComponent,
     ReportListPageComponent,
     CoordinadorPageComponent,
-    LiderPageComponent
+    LiderPageComponent,
+    VotantePageComponent
   ],
   imports: [
     CommonModule,

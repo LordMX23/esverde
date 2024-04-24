@@ -24,10 +24,14 @@ export class LiderListPageComponent implements OnInit{
         switchMap( ({ id }) => this.structureService.getLider('1','11',id))
       ).subscribe( lider => {
         if( !lider ) return this.router.navigateByUrl('/');
-
         this.lideres = lider;
         return;
       });
+  }
+
+  goBack(): void {
+
+    this.router.navigateByUrl(`dashboard/clist`);
   }
 
 }
