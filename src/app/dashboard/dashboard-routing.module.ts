@@ -21,7 +21,7 @@ const routes: Routes = [
       {path: 'vlist/:id', component: VotanteListPageComponent },
       {path: 'vpage/:id', component: VotantePageComponent },
       {path: 'rlist', component: ReportListPageComponent },
-      { path: '**', redirectTo: 'clist' }
+      { path: '**', redirectTo: 'rlist' }
     ]
   }
 ];

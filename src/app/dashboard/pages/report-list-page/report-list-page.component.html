@@ -1,1 +1,83 @@
-<p>report-list-page works!</p>
+<br>
+<div class="row">
+
+    <!-- Total de Estructura -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-success mb-3" style="max-width: 18rem;">
+            <div class="card-header text-uppercase">Total de miembros registrados</div>
+            <div class="card-body text-success">
+                <p class="card-text">1275</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Total de Votos -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-danger  mb-3" style="max-width: 18rem;">
+            <div class="card-header text-uppercase">Miembros que han votado</div>
+            <div class="card-body text-success">
+                <p class="card-text">315</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Votos faltantes -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-danger  mb-3" style="max-width: 18rem;">
+            <div class="card-header text-uppercase">Votos faltantes</div>
+            <div class="card-body text-success">
+                <p class="card-text">960</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-info  mb-3" style="max-width: 18rem;">
+            <div class="card-header text-uppercase">Grafica de Votos</div>
+            <div class="card-body text-success">
+                <app-chart-pie-structure></app-chart-pie-structure>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="container">
+    <div class="row my-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Conteo rapido</div>
+                </div>
+                <div class="card-body">
+                    <app-chart-column-partidos></app-chart-column-partidos>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- <div class="container">
+    <div class="row my-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Estado de votantes</div>
+                </div>
+                <div class="card-body">
+                    <apx-chart [series]="chartOptions.series!" [chart]="chartOptions.chart!"
+                        [xaxis]="chartOptions.xaxis!" [title]="chartOptions.title!"></apx-chart>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<!-- 
+<div id="chart">
+    <apx-chart [series]="chartOptionsColor.series!" [chart]="chartOptionsColor.chart!"
+        [dataLabels]="chartOptionsColor.dataLabels!" [plotOptions]="chartOptionsColor.plotOptions!"
+        [yaxis]="chartOptionsColor.yaxis!" [xaxis]="chartOptionsColor.xaxis!" [legend]="chartOptionsColor.legend!"
+        [colors]="chartOptionsColor.colors!" [grid]="chartOptionsColor.grid!"></apx-chart>
+</div> -->

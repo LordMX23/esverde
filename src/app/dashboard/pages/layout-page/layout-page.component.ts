@@ -14,7 +14,7 @@ export class LayoutPageComponent {
 
   public sidebarItems = [
     {label: 'Listado', icon: 'label', url:'./clist'},
-    {label: 'Buscar', icon: 'search', url:'./rlist'}
+    {label: 'Dashboard', icon: 'dashboard', url:'./rlist'}
   ];
 
   constructor(

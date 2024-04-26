@@ -12,6 +12,9 @@ import { CoordinadorPageComponent } from './pages/coordinador-page/coordinador-p
 import { ReactiveFormsModule } from '@angular/forms';
 import { LiderPageComponent } from './pages/lider-page/lider-page.component';
 import { VotantePageComponent } from './pages/votante-page/votante-page.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { ChartPieStructureComponent } from './components/chart-pie-structure/chart-pie-structure.component';
+import { ChartColumnPartidosComponent } from './components/chart-column-partidos/chart-column-partidos.component';
 
 
 @NgModule({
@@ -23,13 +26,16 @@ import { VotantePageComponent } from './pages/votante-page/votante-page.componen
     ReportListPageComponent,
     CoordinadorPageComponent,
     LiderPageComponent,
-    VotantePageComponent
+    VotantePageComponent,
+    ChartPieStructureComponent,
+    ChartColumnPartidosComponent
   ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgApexchartsModule
   ]
 })
 export class DashboardModule { }
