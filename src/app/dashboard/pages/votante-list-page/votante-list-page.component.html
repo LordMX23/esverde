@@ -3,41 +3,9 @@
 <br><br>
 
 <div class="table-responsive">
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Nombre</th>
-                <th scope="col">Telefono</th>
-                <th scope="col">Seccion</th>
-                <th scope="col">Domicilio</th>
-                <th scope="col">Editar</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let votante of votantes">
-
-                <th scope="row">
-                    {{ votante.nombre }}
-                </th>
-                <td>
-                    {{ votante.telefono }}
-                </td>
-                <td>
-                    {{ votante.seccion }}
-                </td>
-                <td>
-                    {{ votante.domilio }}
-                </td>
-                <td>
-                    <button mat-button mat-raised color="primary" [routerLink]="['/dashboard/vpage', votante.id]">
-                        <mat-icon>edit</mat-icon>
-                        Editar
-                    </button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <app-list-votantes-table [votantes]="votantes"></app-list-votantes-table>
 </div>
+
 <button mat-button color="warn" (click)="goBack()">
     Regresar
 </button>

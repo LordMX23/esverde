@@ -15,7 +15,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { MatPaginatorModule} from '@angular/material/paginator';
+import { MatTableModule} from '@angular/material/table';
 
 @NgModule({
   exports: [
@@ -34,7 +36,9 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     MatSidenavModule,
     MatSnackBarModule,
     MatToolbarModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatPaginatorModule,
+    MatTableModule,
   ]
 })
 export class MaterialModule { }

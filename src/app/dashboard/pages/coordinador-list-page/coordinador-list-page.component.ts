@@ -7,13 +7,13 @@ import { CoordinadorResponse } from '../../interfaces/coordinador-response.inter
   templateUrl: './coordinador-list-page.component.html',
   styles: ``
 })
-export class CoordinadorListPageComponent implements OnInit {
+export class CoordinadorListPageComponent {
 
   private structureService = inject( StructureService );
   public coordinadores: CoordinadorResponse[] =  [];
 
 
-  ngOnInit(): void {
+  constructor() {
 
     this.structureService.getCoordinadorList("1","1","1")
     .subscribe(coordi => this.coordinadores = coordi);

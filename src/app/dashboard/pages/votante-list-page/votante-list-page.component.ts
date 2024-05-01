@@ -10,19 +10,18 @@ import Swal from 'sweetalert2'
   templateUrl: './votante-list-page.component.html',
   styles: ``
 })
-export class VotanteListPageComponent implements OnInit{
+export class VotanteListPageComponent{
 
   private structureService = inject( StructureService );
-  public votantes: VotanteResponse[] =  [];
-  public urlId: number =0;
   private activatedRoute = inject(ActivatedRoute)
   private router = inject(Router)
 
-  ngOnInit(): void {
-   
-    this.ListaVotante();
-    
+  public votantes: VotanteResponse[] =  [];
+  public urlId: number =0;
 
+  constructor() {
+    this.ListaVotante();
+    this.GetCoordinadorByLiderId();
   }
 
   ListaVotante(){
@@ -34,8 +33,6 @@ export class VotanteListPageComponent implements OnInit{
           next: (votante) => {
             if( !votante ) return this.router.navigateByUrl('/');
             this.votantes = votante;
-            this.urlId = this.votantes[0].idpadre;
-            this.GetCoordinadorByLiderId();
             return;
             },
           error: (message) => {

@@ -12,17 +12,18 @@ import { switchMap } from 'rxjs';
 export class LiderListPageComponent implements OnInit{
 
   private structureService = inject( StructureService );
-  public lideres: LiderResponse[] =  [];
   private activatedRoute = inject(ActivatedRoute)
   private router = inject(Router)
 
+  public lideres: LiderResponse[] =  [];
 
   ngOnInit(): void {
 
     this.activatedRoute.params
       .pipe(
         switchMap( ({ id }) => this.structureService.getLider('1','11',id))
-      ).subscribe( lider => {
+      )
+      .subscribe( lider => {
         if( !lider ) return this.router.navigateByUrl('/');
         this.lideres = lider;
         return;

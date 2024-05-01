@@ -1,12 +1,10 @@
-<!-- <p>coordinador-list-page works!</p>
-{{ coordinadores | json}} -->
-
 <h1>Listado de Coordinadores</h1>
 <mat-divider></mat-divider>
 <br><br>
 
 <div class="table-responsive">
-    <table class="table">
+    <app-list-coordinadores-table [coordinadores]="coordinadores"></app-list-coordinadores-table>
+    <!-- <table class="table">
         <thead>
             <tr>
                 <th scope="col">Nombre</th>
@@ -42,5 +40,7 @@
                 </td>
             </tr>
         </tbody>
-    </table>
+    </table> -->
 </div>
+
+<!-- {{ coordinadores | json }} -->

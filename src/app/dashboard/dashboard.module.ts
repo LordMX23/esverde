@@ -15,6 +15,9 @@ import { VotantePageComponent } from './pages/votante-page/votante-page.componen
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { ChartPieStructureComponent } from './components/chart-pie-structure/chart-pie-structure.component';
 import { ChartColumnPartidosComponent } from './components/chart-column-partidos/chart-column-partidos.component';
+import { ListVotantesTableComponent } from './components/list-votantes-table/list-votantes-table.component';
+import { ListLideresTableComponent } from './components/list-lideres-table/list-lideres-table.component';
+import { ListCoordinadoresTableComponent } from './components/list-coordinadores-table/list-coordinadores-table.component';
 
 
 @NgModule({
@@ -28,7 +31,10 @@ import { ChartColumnPartidosComponent } from './components/chart-column-partidos
     LiderPageComponent,
     VotantePageComponent,
     ChartPieStructureComponent,
-    ChartColumnPartidosComponent
+    ChartColumnPartidosComponent,
+    ListVotantesTableComponent,
+    ListLideresTableComponent,
+    ListCoordinadoresTableComponent
   ],
   imports: [
     CommonModule,
