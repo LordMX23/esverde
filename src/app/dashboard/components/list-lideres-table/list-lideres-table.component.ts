@@ -9,8 +9,11 @@ import { MatPaginator } from '@angular/material/paginator';
   styles: ``
 })
 export class ListLideresTableComponent implements OnChanges {
+
+  @Input()
+  lideres: LiderResponse[] =  [];
   
-  displayedColumns: string[] = ['nombre', 'telefono', 'seccion', 'editar', 'votantes'];
+  displayedColumns: string[] = ['nombre', 'telefono', 'seccion', 'editar', 'votantes', 'estructura'];
   dataSource: MatTableDataSource<LiderResponse>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -23,7 +26,8 @@ export class ListLideresTableComponent implements OnChanges {
     this.dataSource.paginator = this.paginator;
   }
 
-  @Input()
-  lideres: LiderResponse[] =  [];
+ 
+
+  
 
 }

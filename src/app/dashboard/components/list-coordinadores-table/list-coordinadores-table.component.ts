@@ -10,7 +10,7 @@ import { CoordinadorResponse } from '../../interfaces/coordinador-response.inter
 })
 export class ListCoordinadoresTableComponent implements OnChanges {
   
-  displayedColumns: string[] = ['nombre', 'telefono', 'seccion', 'editar', 'lideres'];
+  displayedColumns: string[] = ['nombre', 'telefono', 'seccion', 'editar', 'lideres', 'estructura'];
   dataSource: MatTableDataSource<CoordinadorResponse>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 

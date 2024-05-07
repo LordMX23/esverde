@@ -8,6 +8,9 @@ import { VotanteResponse } from '../interfaces/votante-response.interface';
 import { CoordinadorUpdate } from '../interfaces/coordinador-update.interface';
 import { LiderUpdate } from '../interfaces/lider-update.interface';
 import { VotanteUpdate } from '../interfaces/votante-update.interface';
+import { VotanteTotalVotos } from '../interfaces/votante-total-votos.interface';
+import { GetListaVotosResponse } from '../interfaces/get-lista-votos-response.interface';
+
 
 @Injectable({providedIn: 'root'})
 export class StructureService {
@@ -200,6 +203,33 @@ export class StructureService {
         
 
         return this.http.post(url, body, { headers })
+        .pipe(
+            catchError((error) => {
+                throw `Error: ${error.toString()}`;
+            })
+        );
+    }
+
+    getVotanteTotalVotos(): Observable<VotanteTotalVotos[]>{
+        const url = `${this.baseUrl}/Registros/GetVotante_Total_Votos`;
+        const token = localStorage.getItem('token');
+        const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+        return this.http.post<VotanteTotalVotos[]>(url,'', { headers })
+        .pipe(
+            catchError((error) => {
+                throw `Error: ${error.toString()}`;
+            })
+        );
+    }
+
+    getListaVotos(tipo: number, id: number): Observable<GetListaVotosResponse[]>{
+        const url = `${this.baseUrl}/Registros/GetListaVotos?Tipo=${tipo}&id=${id}`;
+        const token = localStorage.getItem('token');
+        const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+
+        return this.http.post<GetListaVotosResponse[]>(url,'', { headers })
         .pipe(
             catchError((error) => {
                 throw `Error: ${error.toString()}`;

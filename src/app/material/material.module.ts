@@ -39,6 +39,7 @@ import { MatTableModule} from '@angular/material/table';
     MatSlideToggleModule,
     MatPaginatorModule,
     MatTableModule,
+    // MatTableExporterModule
   ]
 })
 export class MaterialModule { }

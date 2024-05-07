@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
+import ApexCharts from 'apexcharts';
 import {
   ApexChart,
   ApexAxisChartSeries,
-  ChartComponent,
   ApexDataLabels,
   ApexPlotOptions,
   ApexYAxis,
   ApexLegend,
-  ApexGrid
-} from "ng-apexcharts";
+  ApexGrid,
+} from 'ng-apexcharts';
 
 type ApexXAxis = {
-  type?: "category" | "datetime" | "numeric";
+  type?: 'category' | 'datetime' | 'numeric';
   categories?: any;
   labels?: {
     style?: {
@@ -37,85 +37,98 @@ export type ChartOptions = {
 @Component({
   selector: 'app-chart-column-partidos',
   templateUrl: './chart-column-partidos.component.html',
-  styles: ``
+  styles: ``,
 })
 export class ChartColumnPartidosComponent {
-
   public chartOptions: Partial<ChartOptions>;
 
   constructor() {
     this.chartOptions = {
       series: [
         {
-          name: "Votos",
-          data: [21, 22, 10, 28, 16, 21, 13, 21]
-        }
+          name: 'Votos',
+          data: [21, 22, 10, 28, 16, 21, 13, 21, 32, 21, 22],
+        },
       ],
       chart: {
         height: 350,
-        type: "bar",
+        type: 'bar',
         events: {
-          click: function(chart, w, e) {
-          // console.log(chart, w, e)
-          }
-        }
+          dataPointSelection: function (event, chartContext, config) {
+            console.log('dataPointSelection');
+            console.log(config.dataPointIndex);
+            console.log(config);
+          },
+          xAxisLabelClick: function (event, chartContext, config) {
+            console.log('xAxisLabelClick');
+            console.log(config);
+          },
+        },
       },
       colors: [
-        "#008FFB",
-        "#FEB019",
-        "#FF4560",
-        "#00E396",
-        "#775DD0",
-        "#546E7A",
-        "#26a69a",
-        "#D10CE8"
+        '#621132',
+        '#D50000',
+        '#23C423',
+        '#B71C1C',
+        '#FF8000',
+        '#00BCD4',
+        '#512DAB',
+        '#7B1FA2',
+        '#BF360C',
+        '#607D8B',
+        '#212121',
       ],
       plotOptions: {
         bar: {
-          columnWidth: "45%",
-          distributed: true
-        }
+          columnWidth: '45%',
+          distributed: true,
+        },
       },
       dataLabels: {
-        enabled: true
+        enabled: true,
       },
       legend: {
-        show: false
+        show: false,
       },
       grid: {
-        show: true
+        show: true,
       },
       title: {
-        text: "Votos por partido"
+        text: 'Votos por partido',
       },
       xaxis: {
         categories: [
-          ["PRI", "Doe"],
-          ["Morena", "Smith"],
-          ["PAN", "Williams"],
-          ["PVEM","Ranulfo"],
-          ["PRD", "Brown"],
-          ["Coa01", "Evans"],
-          ["Coa02", "Wilson"],
-          ["Coa03", "Roberts"]
+          ['Morena', 'Jorge Lara'],
+          ['FCC', 'Laura Lopez'],
+          ['PVEM', 'Ranulfo Llaven'],
+          ['PT', 'Fredy Toala'],
+          ['MC', 'Roney Champo'],
+          ['CU', 'Maria Naranjo'],
+          ['PMC', 'Ausencio Clemente'],
+          ['PESC', 'Ana Perez'],
+          ['RSPC', 'Rogi Lazaro'],
+          ['Independient', 'Independiente'],
+          ['Nulos', 'Nulo'],
         ],
         labels: {
           style: {
             colors: [
-              "#008FFB",
-              "#FEB019",
-              "#FF4560",
-              "#00E396",
-              "#775DD0",
-              "#546E7A",
-              "#26a69a",
-              "#D10CE8"
+              '#621132',
+              '#FF3D00',
+              '#23C423',
+              '#B71C1C',
+              '#FF8000',
+              '#00BCD4',
+              '#512DAB',
+              '#7B1FA2',
+              '#BF360C',
+              '#607D8B',
+              '#212121',
             ],
-            fontSize: "12px"
-          }
-        }
-      }
+            fontSize: '12px',
+          },
+        },
+      },
     };
   }
-
 }

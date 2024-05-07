@@ -18,6 +18,9 @@ import { ChartColumnPartidosComponent } from './components/chart-column-partidos
 import { ListVotantesTableComponent } from './components/list-votantes-table/list-votantes-table.component';
 import { ListLideresTableComponent } from './components/list-lideres-table/list-lideres-table.component';
 import { ListCoordinadoresTableComponent } from './components/list-coordinadores-table/list-coordinadores-table.component';
+import { ListaEstructuraVotosComponent } from './components/lista-estructura-votos/lista-estructura-votos.component';
+import { ListaEstructuraPageComponent } from './pages/lista-estructura-page/lista-estructura-page.component';
+
 
 
 @NgModule({
@@ -34,7 +37,9 @@ import { ListCoordinadoresTableComponent } from './components/list-coordinadores
     ChartColumnPartidosComponent,
     ListVotantesTableComponent,
     ListLideresTableComponent,
-    ListCoordinadoresTableComponent
+    ListCoordinadoresTableComponent,
+    ListaEstructuraVotosComponent,
+    ListaEstructuraPageComponent
   ],
   imports: [
     CommonModule,

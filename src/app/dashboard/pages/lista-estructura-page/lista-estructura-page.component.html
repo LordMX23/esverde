@@ -1,0 +1,43 @@
+<h1>Listado de Estructura</h1>
+<mat-divider></mat-divider>
+<br><br>
+<div class="table-responsive">
+    <app-lista-estructura-votos [ListaVotos]="ListaVotos" />
+    <!-- <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Coordinador</th>
+                <th scope="col">Lider</th>
+                <th scope="col">Votante</th>
+                <th scope="col">Telefono</th>
+                <th scope="col">Votó</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let listaVotos of ListaVotos">
+
+                <th scope="row">
+                    {{ listaVotos.coordinador }}
+                </th>
+                <td>
+                    {{ listaVotos.lider }}
+                </td>
+                <td>
+                    {{ listaVotos.votante }}
+                </td>
+                <td>
+                    {{ listaVotos.telefono }}
+                </td>
+                <td *ngIf="listaVotos.voto === 1">
+                    SI
+                </td>
+                <td *ngIf="listaVotos.voto === 0">
+                    NO
+                </td>
+            </tr>
+        </tbody>
+    </table> -->
+</div>
+<button mat-button color="warn" (click)="goBack()">
+    Regresar
+</button>
