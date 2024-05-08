@@ -23,7 +23,7 @@ export class ReportListPageComponent implements OnInit {
     setInterval(() => {
       this.GetVotante_Total_Votos();
       this.GetPartidoVotos();
-    }, 20000)
+    }, 60000)
 
   }
 
