@@ -18,7 +18,6 @@ export class LoginPageComponent {
   private fb          = inject( FormBuilder );
   private authService = inject( AuthService );
   private router      = inject( Router )
-  private http        = inject( HttpClient );
 
 
   public myForm: FormGroup = this.fb.group({

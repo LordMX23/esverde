@@ -1,4 +1,4 @@
-import { Component, DoCheck, Input, OnChanges, OnInit, signal, SimpleChanges } from '@angular/core';
+import { Component,  Input, OnChanges,  SimpleChanges } from '@angular/core';
 
 import {
   ApexNonAxisChartSeries,
@@ -20,16 +20,16 @@ export type ChartOptions = {
   styles: ``,
 })
 export class ChartPieStructureComponent implements OnChanges {
-  // public chartOptions: Partial<ChartOptions>;
+  
   public chartOptions: Partial<ChartOptions>;
 
-  @Input() chartSerie: number[] = [];
+  @Input() chartVotanteTotalVotos: number[] = [];
 
   constructor() {
     this.LlenaGrafica();
 
     this.chartOptions = {
-      series: this.chartSerie,
+      series: this.chartVotanteTotalVotos,
       chart: {
         type: 'donut',
       },
@@ -57,9 +57,8 @@ export class ChartPieStructureComponent implements OnChanges {
 
   LlenaGrafica(): void {
 
-
     this.chartOptions = {
-      series: this.chartSerie,
+      series: this.chartVotanteTotalVotos,
       chart: {
         type: 'donut',
       },
@@ -80,4 +79,5 @@ export class ChartPieStructureComponent implements OnChanges {
       ],
     };
   }
+
 }

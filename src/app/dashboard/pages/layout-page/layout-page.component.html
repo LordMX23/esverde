@@ -28,7 +28,7 @@
         </button>
 
         <span class="spacer"></span>
-        <span>{{ user }}</span>
+        <span>{{ user()?.nombre }}</span>
 
         <button mat-button (click)="onLogout()">
             Cerrar Sesion

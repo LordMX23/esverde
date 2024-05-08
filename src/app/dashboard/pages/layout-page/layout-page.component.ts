@@ -10,6 +10,7 @@ import { AuthService } from '../../../auth/services/auth.service';
 export class LayoutPageComponent {
 
   private authService = inject( AuthService );
+  public user = computed(() => this.authService.currentUser());
 
 
   public sidebarItems = [
@@ -21,10 +22,15 @@ export class LayoutPageComponent {
       private router: Router
   ){}
 
-  get user(): string | null{
-    return localStorage.getItem('nombre');
-    
-  }
+  // get user(){
+  //   return this.authService.currentUser();
+  // }
+
+  /*Recuperar*/
+  // get user(): string | null{
+  //   return localStorage.getItem('nombre');
+  // }
+
   onLogout(){
     this.authService.logout();
   }

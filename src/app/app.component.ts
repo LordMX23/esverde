@@ -11,27 +11,28 @@ import { AuthStatus } from './auth/interfaces/auth-status.enum';
 export class AppComponent {
   title = 'esverde';
 
-  private authService = inject( AuthService );
-  private router = inject( Router );
+  private authService = inject(AuthService);
+  private router = inject(Router);
 
-  public finishedAuthCheck = computed<boolean>( () => {
-    console.log(this.authService.authStatus() )
-    if ( this.authService.authStatus() === AuthStatus.checking ) {
+  public finishedAuthCheck = computed<boolean>(() => {
+    console.log(this.authService.authStatus())
+    if (this.authService.authStatus() === AuthStatus.checking) {
       return false;
     }
-
     return true;
   });
 
   public authStatusChangedEffect = effect(() => {
 
-    switch( this.authService.authStatus() ) {
+    const url = localStorage.getItem("url") || "/dashboard";
+
+    switch (this.authService.authStatus()) {
 
       case AuthStatus.checking:
         return;
 
       case AuthStatus.authenticated:
-        this.router.navigateByUrl('/dashboard');
+        this.router.navigateByUrl(url);
         return;
 
       case AuthStatus.notAuthenticated:

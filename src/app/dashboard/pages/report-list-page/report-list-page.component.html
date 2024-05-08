@@ -35,7 +35,7 @@
         <div class="card border-info  mb-3" style="max-width: 18rem;">
             <div class="card-header text-uppercase">Grafica de Votos</div>
             <div class="card-body text-success">
-                <app-chart-pie-structure [chartSerie]="chartSerie"></app-chart-pie-structure>
+                <app-chart-pie-structure [chartVotanteTotalVotos]="chartVotanteTotalVotos"></app-chart-pie-structure>
             </div>
         </div>
     </div>
@@ -50,7 +50,7 @@
                     <div class="card-title">Conteo rapido</div>
                 </div>
                 <div class="card-body">
-                    <app-chart-column-partidos></app-chart-column-partidos>
+                    <app-chart-column-partidos [chartPartidoVotos]="chartPartidoVotos"></app-chart-column-partidos>
                 </div>
             </div>
         </div>

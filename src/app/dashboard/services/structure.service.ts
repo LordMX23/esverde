@@ -10,6 +10,7 @@ import { LiderUpdate } from '../interfaces/lider-update.interface';
 import { VotanteUpdate } from '../interfaces/votante-update.interface';
 import { VotanteTotalVotos } from '../interfaces/votante-total-votos.interface';
 import { GetListaVotosResponse } from '../interfaces/get-lista-votos-response.interface';
+import { GetPartidoVotosResponse } from '../interfaces/get-partido-votos-response.interface';
 
 
 @Injectable({providedIn: 'root'})
@@ -230,6 +231,19 @@ export class StructureService {
 
 
         return this.http.post<GetListaVotosResponse[]>(url,'', { headers })
+        .pipe(
+            catchError((error) => {
+                throw `Error: ${error.toString()}`;
+            })
+        );
+    }
+
+    getPartidoVotos(): Observable<GetPartidoVotosResponse[]>{
+        const url = `${this.baseUrl}/Registros/GetPartidoVotos`;
+        const token = localStorage.getItem('token');
+        const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+        return this.http.post<GetPartidoVotosResponse[]>(url,'', { headers })
         .pipe(
             catchError((error) => {
                 throw `Error: ${error.toString()}`;

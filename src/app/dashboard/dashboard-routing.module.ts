@@ -9,20 +9,21 @@ import { CoordinadorPageComponent } from './pages/coordinador-page/coordinador-p
 import { LiderPageComponent } from './pages/lider-page/lider-page.component';
 import { VotantePageComponent } from './pages/votante-page/votante-page.component';
 import { ListaEstructuraPageComponent } from './pages/lista-estructura-page/lista-estructura-page.component';
+import { isAuthenticatedGuard } from '../auth/guards';
 
 const routes: Routes = [
   {
     path: '',
     component: LayoutPageComponent,
     children: [
-      {path: 'clist', component: CoordinadorListPageComponent },
-      {path: 'cpage/:id', component: CoordinadorPageComponent },
-      {path: 'llist/:id', component: LiderListPageComponent },
-      {path: 'lpage/:id', component: LiderPageComponent },
-      {path: 'vlist/:id', component: VotanteListPageComponent },
-      {path: 'vpage/:id', component: VotantePageComponent },
-      {path: 'estructurapage/:tipo/:id', component: ListaEstructuraPageComponent },
-      {path: 'rlist', component: ReportListPageComponent },
+      {path: 'clist', canActivate: [isAuthenticatedGuard], component: CoordinadorListPageComponent },
+      {path: 'cpage/:id', canActivate: [isAuthenticatedGuard], component: CoordinadorPageComponent },
+      {path: 'llist/:id', canActivate: [isAuthenticatedGuard], component: LiderListPageComponent },
+      {path: 'lpage/:id', canActivate: [isAuthenticatedGuard], component: LiderPageComponent },
+      {path: 'vlist/:id', canActivate: [isAuthenticatedGuard], component: VotanteListPageComponent },
+      {path: 'vpage/:id', canActivate: [isAuthenticatedGuard], component: VotantePageComponent },
+      {path: 'estructurapage/:tipo/:id', canActivate: [isAuthenticatedGuard], component: ListaEstructuraPageComponent },
+      {path: 'rlist', canActivate: [isAuthenticatedGuard], component: ReportListPageComponent },
       { path: '**', redirectTo: 'rlist' }
     ]
   }
