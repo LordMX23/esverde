@@ -20,6 +20,8 @@ import { ListLideresTableComponent } from './components/list-lideres-table/list-
 import { ListCoordinadoresTableComponent } from './components/list-coordinadores-table/list-coordinadores-table.component';
 import { ListaEstructuraVotosComponent } from './components/lista-estructura-votos/lista-estructura-votos.component';
 import { ListaEstructuraPageComponent } from './pages/lista-estructura-page/lista-estructura-page.component';
+import { ListaVotosPartidoCasillaComponent } from './components/lista-votos-partido-casilla/lista-votos-partido-casilla.component';
+import { ListaVotosPartidoPageComponent } from './pages/lista-votos-partido-page/lista-votos-partido-page.component';
 
 
 
@@ -39,7 +41,9 @@ import { ListaEstructuraPageComponent } from './pages/lista-estructura-page/list
     ListLideresTableComponent,
     ListCoordinadoresTableComponent,
     ListaEstructuraVotosComponent,
-    ListaEstructuraPageComponent
+    ListaEstructuraPageComponent,
+    ListaVotosPartidoCasillaComponent,
+    ListaVotosPartidoPageComponent
   ],
   imports: [
     CommonModule,

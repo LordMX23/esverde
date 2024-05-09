@@ -1,0 +1,11 @@
+<br>
+<h1> {{ partidoName }} </h1>
+<h2> Candidato: {{ candidatoName }}</h2>
+
+<div class="table-responsive">
+    <app-lista-votos-partido-casilla [PartidoVotosSeccion]="PartidoVotosSeccion" />
+</div>
+
+<button mat-button color="warn" (click)="goBack()">
+    Regresar
+</button>

@@ -10,6 +10,7 @@ import { LiderPageComponent } from './pages/lider-page/lider-page.component';
 import { VotantePageComponent } from './pages/votante-page/votante-page.component';
 import { ListaEstructuraPageComponent } from './pages/lista-estructura-page/lista-estructura-page.component';
 import { isAuthenticatedGuard } from '../auth/guards';
+import { ListaVotosPartidoPageComponent } from './pages/lista-votos-partido-page/lista-votos-partido-page.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,7 @@ const routes: Routes = [
       {path: 'vlist/:id', canActivate: [isAuthenticatedGuard], component: VotanteListPageComponent },
       {path: 'vpage/:id', canActivate: [isAuthenticatedGuard], component: VotantePageComponent },
       {path: 'estructurapage/:tipo/:id', canActivate: [isAuthenticatedGuard], component: ListaEstructuraPageComponent },
+      {path: 'lvppage/:id', canActivate: [isAuthenticatedGuard], component: ListaVotosPartidoPageComponent },
       {path: 'rlist', canActivate: [isAuthenticatedGuard], component: ReportListPageComponent },
       { path: '**', redirectTo: 'rlist' }
     ]

@@ -1,4 +1,5 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, inject, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Router } from '@angular/router';
 import ApexCharts from 'apexcharts';
 import {
   ApexChart,
@@ -45,8 +46,10 @@ export class ChartColumnPartidosComponent implements OnChanges {
 
   @Input() chartPartidoVotos: number[] = [];
 
+  private router = inject(Router);
+
   constructor() {
-    this.chartOptions = {
+    this.chartOptions = {...this.chartPartidoVotos, ...{
       series: [
         {
           name: 'Votos',
@@ -57,14 +60,9 @@ export class ChartColumnPartidosComponent implements OnChanges {
         height: 350,
         type: 'bar',
         events: {
-          dataPointSelection: function (event, chartContext, config) {
-            //console.log('dataPointSelection');
-            //console.log(config.dataPointIndex);
-          },
-          xAxisLabelClick: function (event, chartContext, config) {
-            //console.log('xAxisLabelClick');
-            //console.log(config);
-          },
+          click: (event: any, chartContext: any, config: any) => {
+            this.RedireccionaCasillas(config.dataPointIndex);
+          }
         },
       },
       colors: [
@@ -131,7 +129,7 @@ export class ChartColumnPartidosComponent implements OnChanges {
           },
         },
       },
-    };
+    }} ;
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -139,7 +137,7 @@ export class ChartColumnPartidosComponent implements OnChanges {
   }
 
   LlenaGrafica(): void {
-    this.chartOptions = {
+    this.chartOptions = {...this.chartPartidoVotos, ...{
       series: [
         {
           name: 'Votos',
@@ -150,15 +148,9 @@ export class ChartColumnPartidosComponent implements OnChanges {
         height: 350,
         type: 'bar',
         events: {
-          dataPointSelection: function (event, chartContext, config) {
-            //console.log('dataPointSelection');
-            console.log(config.dataPointIndex);
-            //console.log(config);
-          },
-          xAxisLabelClick: function (event, chartContext, config) {
-            //console.log('xAxisLabelClick');
-            //console.log(config);
-          },
+          click: (event: any, chartContext: any, config: any) => {
+            this.RedireccionaCasillas(config.dataPointIndex);
+          }
         },
       },
       colors: [
@@ -225,7 +217,13 @@ export class ChartColumnPartidosComponent implements OnChanges {
           },
         },
       },
-    };
+    }} ;
+    
+  }
+
+  RedireccionaCasillas(partido: number){
+    console.log('Redirecciona: ',partido+1);
+    this.router.navigateByUrl(`dashboard/lvppage/${partido+1}`);
   }
 
 }

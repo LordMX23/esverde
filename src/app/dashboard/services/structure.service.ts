@@ -11,6 +11,7 @@ import { VotanteUpdate } from '../interfaces/votante-update.interface';
 import { VotanteTotalVotos } from '../interfaces/votante-total-votos.interface';
 import { GetListaVotosResponse } from '../interfaces/get-lista-votos-response.interface';
 import { GetPartidoVotosResponse } from '../interfaces/get-partido-votos-response.interface';
+import { GetPartidoVotosSeccionResponse } from '../interfaces/get-partido-votos-seccion-response.interface';
 
 
 @Injectable({providedIn: 'root'})
@@ -251,6 +252,17 @@ export class StructureService {
         );
     }
 
-    
+    getPartidoVotosSeccion(id: number): Observable<GetPartidoVotosSeccionResponse[]>{
+        const url = `${this.baseUrl}/Registros/GetPartidoVotosSeccion?Id_Partido=${id}`;
+        const token = localStorage.getItem('token');
+        const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+        return this.http.post<GetPartidoVotosSeccionResponse[]>(url,'', { headers })
+        .pipe(
+            catchError((error) => {
+                throw `Error: ${error.toString()}`;
+            })
+        );
+    }
     
 }

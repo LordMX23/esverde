@@ -9,22 +9,22 @@ import { switchMap } from 'rxjs';
   templateUrl: './lider-list-page.component.html',
   styles: ``
 })
-export class LiderListPageComponent implements OnInit{
+export class LiderListPageComponent implements OnInit {
 
-  private structureService = inject( StructureService );
+  private structureService = inject(StructureService);
   private activatedRoute = inject(ActivatedRoute)
   private router = inject(Router)
 
-  public lideres: LiderResponse[] =  [];
+  public lideres: LiderResponse[] = [];
 
   ngOnInit(): void {
 
     this.activatedRoute.params
       .pipe(
-        switchMap( ({ id }) => this.structureService.getLider('1','11',id))
+        switchMap(({ id }) => this.structureService.getLider('1', '11', id))
       )
-      .subscribe( lider => {
-        if( !lider ) return this.router.navigateByUrl('/');
+      .subscribe(lider => {
+        if (!lider) return this.router.navigateByUrl('/');
         this.lideres = lider;
         return;
       });

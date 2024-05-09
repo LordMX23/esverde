@@ -26,8 +26,4 @@ export class ListLideresTableComponent implements OnChanges {
     this.dataSource.paginator = this.paginator;
   }
 
- 
-
-  
-
 }
