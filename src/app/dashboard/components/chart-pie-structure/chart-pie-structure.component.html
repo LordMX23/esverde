@@ -1,7 +1,21 @@
-    <apx-chart
+    <!-- <apx-chart
       [series]="chartOptions.series!"
       [chart]="chartOptions.chart!"
       [labels]="chartOptions.labels!"
       [colors]="chartOptions.colors!"
       [responsive]="chartOptions.responsive!">
-    </apx-chart>
+    </apx-chart> -->
+
+    <ngx-charts-pie-chart *ngIf="chartVotanteTotalVotos"
+    [view]="view"
+    [scheme]="colorScheme"
+    [results]="single"
+    [gradient]="gradient"
+    [doughnut]="isDoughnut"
+    [legend]="showLegend"
+    [legendPosition]="legendPosition"
+    (select)="onSelect($event)"
+    
+    >
+  </ngx-charts-pie-chart>
+  <!-- [labels]="true" -->

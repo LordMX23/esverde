@@ -1,36 +1,97 @@
 <div class="mat-elevation-z8">
     <button (click)="exportexcel()">Exportar a Excel</button>
+    
       <table mat-table [dataSource]="dataSource" id="excel-table">
    
-        <!-- Coordinador Column -->
-      <ng-container matColumnDef="coordinador">
-          <th mat-header-cell *matHeaderCellDef> Coordinador </th>
-          <td mat-cell *matCellDef="let element"> {{element.coordinador}} </td>
+        <!-- C. Municipal -->
+      <ng-container matColumnDef="cmNombre">
+          <th mat-header-cell *matHeaderCellDef> C. Municipal </th>
+          <td mat-cell *matCellDef="let element"> {{element.cmNombre}} </td>
         </ng-container>
     
-        <!-- Lider Column -->
-        <ng-container matColumnDef="lider">
-          <th mat-header-cell *matHeaderCellDef> Lider </th>
-          <td mat-cell *matCellDef="let element"> {{element.lider}} </td>
+        <!-- C.M. Telefono -->
+        <ng-container matColumnDef="cmTelefono">
+          <th mat-header-cell *matHeaderCellDef> C.M. Telefono </th>
+          <td mat-cell *matCellDef="let element"> {{element.cmTelefono}} </td>
         </ng-container>
     
-        <!-- Votante Column -->
-        <ng-container matColumnDef="votante">
+        <!-- C. Zona-->
+        <ng-container matColumnDef="czNombre">
+          <th mat-header-cell *matHeaderCellDef> C. Zona </th>
+          <td mat-cell *matCellDef="let element"> {{element.czNombre}} </td>
+        </ng-container>
+
+        <!-- C.Z. Telefono -->
+        <ng-container matColumnDef="czTelefono">
+            <th mat-header-cell *matHeaderCellDef> C.Z. Telefono </th>
+            <td mat-cell *matCellDef="let element"> {{element.czTelefono}} </td>
+          </ng-container>
+
+          <!-- C.Z. Seccion -->
+        <ng-container matColumnDef="czSeccion">
+            <th mat-header-cell *matHeaderCellDef> C.Z. Seccion </th>
+            <td mat-cell *matCellDef="let element"> {{element.czSeccion}} </td>
+          </ng-container>
+
+          <!-- C. Seccion-->
+        <ng-container matColumnDef="csNombre">
+          <th mat-header-cell *matHeaderCellDef> C. Seccion </th>
+          <td mat-cell *matCellDef="let element"> {{element.csNombre}} </td>
+        </ng-container>
+
+        <!-- C.S. Telefono -->
+        <ng-container matColumnDef="csTelefono">
+            <th mat-header-cell *matHeaderCellDef> C.S. Telefono </th>
+            <td mat-cell *matCellDef="let element"> {{element.csTelefono}} </td>
+          </ng-container>
+
+          <!-- C.S. Seccion -->
+        <ng-container matColumnDef="csSeccion">
+            <th mat-header-cell *matHeaderCellDef> C.S. Seccion </th>
+            <td mat-cell *matCellDef="let element"> {{element.csSeccion}} </td>
+          </ng-container>
+
+          <!-- Promotor-->
+        <ng-container matColumnDef="pNombre">
+          <th mat-header-cell *matHeaderCellDef> Promotor </th>
+          <td mat-cell *matCellDef="let element"> {{element.pNombre}} </td>
+        </ng-container>
+
+        <!-- P. Telefono -->
+        <ng-container matColumnDef="pTelefono">
+            <th mat-header-cell *matHeaderCellDef> P. Telefono </th>
+            <td mat-cell *matCellDef="let element"> {{element.pTelefono}} </td>
+          </ng-container>
+
+          <!-- P. Seccion -->
+        <ng-container matColumnDef="pSeccion">
+            <th mat-header-cell *matHeaderCellDef>P. Seccion </th>
+            <td mat-cell *matCellDef="let element"> {{element.pSeccion}} </td>
+          </ng-container>
+
+          <!-- Votante-->
+        <ng-container matColumnDef="vNombre">
           <th mat-header-cell *matHeaderCellDef> Votante </th>
-          <td mat-cell *matCellDef="let element"> {{element.votante}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.vNombre}} </td>
         </ng-container>
 
-        <!-- Telefono Column -->
-        <ng-container matColumnDef="telefono">
-            <th mat-header-cell *matHeaderCellDef> Telefono </th>
-            <td mat-cell *matCellDef="let element"> {{element.telefono}} </td>
+        <!-- V. Telefono -->
+        <ng-container matColumnDef="vTelefono">
+            <th mat-header-cell *matHeaderCellDef> V. Telefono </th>
+            <td mat-cell *matCellDef="let element"> {{element.vTelefono}} </td>
           </ng-container>
 
-          <!-- Votó Column -->
-        <ng-container matColumnDef="voto">
-            <th mat-header-cell *matHeaderCellDef> Voto </th>
-            <td mat-cell *matCellDef="let element"> {{element.voto}} </td>
+          <!-- V. Seccion -->
+        <ng-container matColumnDef="vSeccion">
+            <th mat-header-cell *matHeaderCellDef>V. Seccion </th>
+            <td mat-cell *matCellDef="let element"> {{element.vSeccion}} </td>
           </ng-container>
+
+          <!-- V. Voto -->
+        <ng-container matColumnDef="vVoto">
+          <th mat-header-cell *matHeaderCellDef>V. Votó </th>
+          <td mat-cell *matCellDef="let element"> {{element.vVoto}} </td>
+        </ng-container>
         
     
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

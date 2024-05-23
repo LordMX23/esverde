@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environments/environments';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { CoordinadorResponse } from '../interfaces/coordinador-response.interface';
+import { CoordinadorResponse, PromovidoResponse } from '../interfaces/coordinador-response.interface';
 import { catchError, Observable, of, tap } from 'rxjs';
 import { LiderResponse } from '../interfaces/lider-response.interface';
 import { VotanteResponse } from '../interfaces/votante-response.interface';
@@ -12,6 +12,9 @@ import { VotanteTotalVotos } from '../interfaces/votante-total-votos.interface';
 import { GetListaVotosResponse } from '../interfaces/get-lista-votos-response.interface';
 import { GetPartidoVotosResponse } from '../interfaces/get-partido-votos-response.interface';
 import { GetPartidoVotosSeccionResponse } from '../interfaces/get-partido-votos-seccion-response.interface';
+import { GetEstructuraResponse } from '../interfaces/getEstructuraResponse.interface';
+import { GetCatalogoResponse } from '../interfaces/getCatalogoResponse.interface';
+import { PromovidoUpdateResponse } from '../interfaces/promovidoUpdateResponse.interface';
 
 
 @Injectable({providedIn: 'root'})
@@ -21,6 +24,126 @@ export class StructureService {
     private http = inject(HttpClient);
 
     constructor() { }
+
+    // Total de miembros registrados y cuantos han votado
+    getVotanteTotalVotos(): Observable<VotanteTotalVotos[]>{
+        const url = `${this.baseUrl}/Registros/GetVotante_Total_Votos`;
+        const token = localStorage.getItem('token');
+        const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+        return this.http.post<VotanteTotalVotos[]>(url,'', { headers })
+        .pipe(
+            catchError((error) => {
+                throw `Error: ${error.toString()}`;
+            })
+        );
+    }
+
+    // Conteo rapido , grafica por partido
+    getPartidoVotos(): Observable<GetPartidoVotosResponse[]>{
+        const url = `${this.baseUrl}/Registros/GetPartidoVotos`;
+        const token = localStorage.getItem('token');
+        const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+        return this.http.post<GetPartidoVotosResponse[]>(url,'', { headers })
+        .pipe(
+            catchError((error) => {
+                throw `Error: ${error.toString()}`;
+            })
+        );
+    }
+
+    // Consulta de estructura y reportes de cuantos han votado
+    getEstructura(idTipo : number, IdPersona: number, texto: string): Observable<GetEstructuraResponse[]>{
+        const url = `${this.baseUrl}/Registros/GetEstructura?idTipo=${idTipo.toString()}&IdPersona=${IdPersona.toString()}&texto=${texto.toString()}`;
+        const token = localStorage.getItem('token');
+        const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+        return this.http.post<GetEstructuraResponse[]>(url,'', { headers })
+        .pipe(
+            catchError((error) => {
+                throw `Error: ${error.toString()}`;
+            })
+        );
+
+    }
+
+    // Trae catalogo
+    getCatalogoSinParametro(Tipo: number): Observable<GetCatalogoResponse[]>{
+        const url = `${this.baseUrl}/Registros/GetCatalogo?Tipo=${Tipo.toString()}`;
+        const token = localStorage.getItem('token');
+        const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+        return this.http.post<GetCatalogoResponse[]>(url,'', { headers })
+        .pipe(
+            catchError((error) => {
+                throw `Error: ${error.toString()}`;
+            })
+        );
+    }
+
+
+
+    // Actualiza Votante (Promovido)
+    UpdateVotante( votante: PromovidoUpdateResponse){
+        const url = `${this.baseUrl}/Registros/Promovido_Update`;
+        const token = localStorage.getItem('token');
+        const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+        const body = votante;
+        console.log(body);
+
+        return this.http.post(url, body, { headers })
+        .pipe(
+                catchError((error) => {
+                    throw `Error: ${error.toString()}`;
+                })
+            );
+    }
+
+
+
+    // UpdateVotanteById( votante: PromovidoResponse)
+    // {
+        // const url = `${this.baseUrl}/Registros/VotanteApp`;
+        // const token = localStorage.getItem('token');
+        // const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+        // const body = {
+        //     'id_lider': vot.id_lider,
+        //     'id_votante' : vot.id_votante,
+        //     'nombre': vot.nombre,
+        //     'telefono': vot.telefono,
+        //     'domicilio': vot.domicilio,
+        //     'refdomicilio': vot.refdomicilio,
+        //     "cve_colonia": vot.cve_colonia,
+        //     "seccion": vot.seccion,
+        //     "observaciones" : vot.observaciones,
+        //     "traslado" : true,
+        //     "inefrente": vot.inefrente,
+        //     "ocr": vot.ocr,
+        //     "programas" : vot.programas,
+        //     'id_user':  Number( localStorage.getItem('idUsuario') ),
+        //     'operacion': vot.operacion
+        // };
+
+        // console.log(url);
+        // console.log(body);
+        // console.log(headers);
+        
+
+        // return this.http.post(url, body, { headers })
+        // .pipe(
+        //     catchError((error) => {
+        //         throw `Error: ${error.toString()}`;
+        //     })
+        // );
+    //}
+
+
+    ///////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////
 
     // Coordinador
     getCoordinadorList(id : string,id_perfil: string, id_p: string ): Observable<CoordinadorResponse[]>
@@ -175,55 +298,44 @@ export class StructureService {
         );
     }
 
-    UpdateVotanteById( vot: VotanteUpdate)
-    {
-        const url = `${this.baseUrl}/Registros/VotanteApp`;
-        const token = localStorage.getItem('token');
-        const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    // UpdateVotanteById( vot: VotanteUpdate)
+    // {
+    //     const url = `${this.baseUrl}/Registros/VotanteApp`;
+    //     const token = localStorage.getItem('token');
+    //     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-        const body = {
-            'id_lider': vot.id_lider,
-            'id_votante' : vot.id_votante,
-            'nombre': vot.nombre,
-            'telefono': vot.telefono,
-            'domicilio': vot.domicilio,
-            'refdomicilio': vot.refdomicilio,
-            "cve_colonia": vot.cve_colonia,
-            "seccion": vot.seccion,
-            "observaciones" : vot.observaciones,
-            "traslado" : true,
-            "inefrente": vot.inefrente,
-            "ocr": vot.ocr,
-            "programas" : vot.programas,
-            'id_user':  Number( localStorage.getItem('idUsuario') ),
-            'operacion': vot.operacion
-        };
+    //     const body = {
+    //         'id_lider': vot.id_lider,
+    //         'id_votante' : vot.id_votante,
+    //         'nombre': vot.nombre,
+    //         'telefono': vot.telefono,
+    //         'domicilio': vot.domicilio,
+    //         'refdomicilio': vot.refdomicilio,
+    //         "cve_colonia": vot.cve_colonia,
+    //         "seccion": vot.seccion,
+    //         "observaciones" : vot.observaciones,
+    //         "traslado" : true,
+    //         "inefrente": vot.inefrente,
+    //         "ocr": vot.ocr,
+    //         "programas" : vot.programas,
+    //         'id_user':  Number( localStorage.getItem('idUsuario') ),
+    //         'operacion': vot.operacion
+    //     };
 
-        console.log(url);
-        console.log(body);
-        console.log(headers);
+    //     console.log(url);
+    //     console.log(body);
+    //     console.log(headers);
         
 
-        return this.http.post(url, body, { headers })
-        .pipe(
-            catchError((error) => {
-                throw `Error: ${error.toString()}`;
-            })
-        );
-    }
+    //     return this.http.post(url, body, { headers })
+    //     .pipe(
+    //         catchError((error) => {
+    //             throw `Error: ${error.toString()}`;
+    //         })
+    //     );
+    // }
 
-    getVotanteTotalVotos(): Observable<VotanteTotalVotos[]>{
-        const url = `${this.baseUrl}/Registros/GetVotante_Total_Votos`;
-        const token = localStorage.getItem('token');
-        const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-
-        return this.http.post<VotanteTotalVotos[]>(url,'', { headers })
-        .pipe(
-            catchError((error) => {
-                throw `Error: ${error.toString()}`;
-            })
-        );
-    }
+    
 
     getListaVotos(tipo: number, id: number): Observable<GetListaVotosResponse[]>{
         const url = `${this.baseUrl}/Registros/GetListaVotos?Tipo=${tipo}&id=${id}`;
@@ -239,18 +351,7 @@ export class StructureService {
         );
     }
 
-    getPartidoVotos(): Observable<GetPartidoVotosResponse[]>{
-        const url = `${this.baseUrl}/Registros/GetPartidoVotos`;
-        const token = localStorage.getItem('token');
-        const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-
-        return this.http.post<GetPartidoVotosResponse[]>(url,'', { headers })
-        .pipe(
-            catchError((error) => {
-                throw `Error: ${error.toString()}`;
-            })
-        );
-    }
+    
 
     getPartidoVotosSeccion(id: number): Observable<GetPartidoVotosSeccionResponse[]>{
         const url = `${this.baseUrl}/Registros/GetPartidoVotosSeccion?Id_Partido=${id}`;

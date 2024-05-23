@@ -3,10 +3,28 @@
     <hr>
     <legend>Datos del Votate</legend>
 
+    <mat-form-field class="form-control">
+        <mat-label>Promotor</mat-label>
+        <mat-select formControlName="idpromotor">
+          @for (promotor of catPromotores; track promotor) {
+            <mat-option [value]="promotor.id">{{promotor.descripcion}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+    <!-- <mat-form-field class="form-control">
+        <mat-label>Promotor</mat-label>
+        <input type="text" formControlName="promotor" matInput placeholder="Promotor">
+    </mat-form-field> -->
 
     <mat-form-field class="form-control">
         <mat-label>Nombre</mat-label>
         <input type="text" formControlName="nombre" matInput placeholder="Nombre">
+    </mat-form-field>
+
+    <mat-form-field class="form-control">
+        <mat-label>Apellidos</mat-label>
+        <input type="text" formControlName="apellidos" matInput placeholder="Apellidos">
     </mat-form-field>
 
     <mat-form-field class="form-control">
@@ -15,26 +33,28 @@
     </mat-form-field>
 
     <mat-form-field class="form-control">
-        <mat-label>Domicilio</mat-label>
-        <input type="text" formControlName="domicilio" matInput placeholder="Domicilio">
-    </mat-form-field>
-
-    <mat-form-field class="form-control">
-        <mat-label>Referencia</mat-label>
-        <input type="text" formControlName="referenciadom" matInput placeholder="Referencia">
-    </mat-form-field>
-
-    <mat-form-field class="form-control">
         <mat-label>Seccion</mat-label>
         <input type="text" formControlName="seccion" matInput placeholder="Seccion">
     </mat-form-field>
 
-    <section  class="form-control">
-    <mat-slide-toggle formControlName="traslado" class="example-margin" [color]="color" [checked]="checked"
-        [disabled]="disabled">
-        Traslado!
-    </mat-slide-toggle>
-</section>
+    <!-- <mat-form-field class="form-control">
+        <mat-label>Votó</mat-label>
+        <input type="text" formControlName="voto" matInput placeholder="Votó">
+    </mat-form-field> -->
+
+    <section class="form-control">
+        <mat-slide-toggle formControlName="voto" class="example-margin" [color]="color" [checked]="checked"
+            [disabled]="disabled">
+            Votó!
+        </mat-slide-toggle>
+    </section>
+
+    <section class="form-control">
+        <mat-slide-toggle formControlName="traslado" class="example-margin" [color]="color" [checked]="checked"
+            [disabled]="disabled">
+            Traslado!
+        </mat-slide-toggle>
+    </section>
 
     <button mat-button mat-flat-button color="primary" [disabled]="myForm.invalid" type="submit">
         Guardar

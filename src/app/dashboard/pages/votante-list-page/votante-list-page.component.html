@@ -1,11 +1,11 @@
-<h1>Listado de Votantes</h1>
+<h1> PROMOTOR DE VOTOS: {{ this.miPromotor }} </h1>
+<h2> Votantes </h2>
 <mat-divider></mat-divider>
 <br><br>
 
 <div class="table-responsive">
     <app-list-votantes-table [votantes]="votantes"></app-list-votantes-table>
 </div>
-
 <button mat-button color="warn" (click)="goBack()">
     Regresar
 </button>

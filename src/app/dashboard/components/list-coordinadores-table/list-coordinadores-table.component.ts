@@ -2,6 +2,7 @@ import { Component, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { CoordinadorResponse } from '../../interfaces/coordinador-response.interface';
+import { GetEstructuraResponse } from '../../interfaces/getEstructuraResponse.interface';
 
 @Component({
   selector: 'app-list-coordinadores-table',
@@ -10,7 +11,7 @@ import { CoordinadorResponse } from '../../interfaces/coordinador-response.inter
 })
 export class ListCoordinadoresTableComponent implements OnChanges {
   
-  displayedColumns: string[] = ['nombre', 'telefono', 'seccion', 'editar', 'lideres', 'estructura'];
+  displayedColumns: string[] = ['nombre', 'telefono', 'seccion', 'cZona', 'estructura'];
   dataSource: MatTableDataSource<CoordinadorResponse>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -24,6 +25,6 @@ export class ListCoordinadoresTableComponent implements OnChanges {
   }
 
   @Input()
-  coordinadores: CoordinadorResponse[] =  [];
+  coordinadores: GetEstructuraResponse[] =  [];
 
 }

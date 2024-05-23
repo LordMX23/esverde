@@ -1,93 +1,91 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StructureService } from '../../services/structure.service';
-import { VotanteResponse } from '../../interfaces/votante-response.interface';
 import { switchMap } from 'rxjs';
 import Swal from 'sweetalert2'
-import { VotanteUpdate } from '../../interfaces/votante-update.interface';
+import { GetEstructuraResponse } from '../../interfaces/getEstructuraResponse.interface';
+import { GetCatalogoResponse } from '../../interfaces/getCatalogoResponse.interface';
+import { PromovidoUpdateResponse } from '../../interfaces/promovidoUpdateResponse.interface';
+
+
 
 @Component({
   selector: 'app-votante-page',
   templateUrl: './votante-page.component.html',
   styles: ``
 })
-export class VotantePageComponent {
-  
-  constructor()
-  {
-    this.LlenaVotante();
-  }
+export class VotantePageComponent implements OnInit {
 
-  private fb          = inject( FormBuilder );
+  private fb = inject(FormBuilder);
   private activatedRoute = inject(ActivatedRoute)
-  private structureService = inject( StructureService );
+  private structureService = inject(StructureService);
   private router = inject(Router);
-  public votante: VotanteResponse[] = [];
-  public urlId: number =0;
+  // public votante: VotanteResponse[] = [];
+  // public urlId: number =0;
+  public votante: GetEstructuraResponse[] = [];
+  public catPromotores: GetCatalogoResponse[] = [];
 
   color = 'accent';
   checked = false;
   disabled = false;
 
   public myForm: FormGroup = this.fb.group({
-    nombre:    ['', [ Validators.required, Validators.minLength(10)]],
-    telefono: ['', [ Validators.required, Validators.minLength(10)]],
-    domicilio: ['', ],
-    referenciadom: ['', ],
-    seccion: ['', [ Validators.required, Validators.minLength(2)]],
-    traslado: [{value: false}],
-    
+    idpromotor: ['', [Validators.required]],
+    nombre: ['', [Validators.required, Validators.minLength(3)]],
+    apellidos: ['',],
+    telefono: ['', [Validators.required, Validators.minLength(10)]],
+    seccion: ['', [Validators.required, Validators.minLength(4)]],
+    voto: [{ value: false }],
+    traslado: [{ value: false }],
   });
 
-  LlenaVotante(){
-    this.activatedRoute.params
-      .pipe(
-        switchMap( ({ id }) => this.structureService.getVotanteById(id))
-      ).subscribe({
-        next: (vot) => {
-          if( !vot  ) return this.router.navigateByUrl('/');
-          this.votante=vot;
-          this.myForm.reset({nombre: this.votante[0].nombre ,telefono: this.votante[0].telefono, domicilio: this.votante[0].domilio, 
-          referenciadom: this.votante[0].referenciadom, seccion: this.votante[0].seccion, traslado: this.votante[0].traslado});
-
-          this.urlId = this.votante[0].idpadre;
-          return;
-      },
-      error: (message) => {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: message,
-          footer: ''
-        });
-        return this.router.navigateByUrl('/');
-      }
-    });
+  constructor() {
+    this.structureService.getCatalogoSinParametro(1)
+    .subscribe( cat => this.catPromotores=cat);
   }
 
-  updateVotante(){
-    const votanteUpdate: VotanteUpdate = {
-      'id_lider': this.votante[0].idpadre,
-      'id_votante' : this.votante[0].id,
-      'nombre':this.myForm.get('nombre')?.value,
+  ngOnInit(): void {
+    this.LlenaVotante();
+  }
+
+  LlenaVotante() {
+    this.activatedRoute.params
+      .pipe(
+        switchMap(({ id }) => this.structureService.getEstructura(11, id, ''))
+      )
+      .subscribe(estructura => {
+        if (!estructura) return this.router.navigateByUrl('/');
+        this.votante = estructura;
+        this.myForm.reset(
+          {
+            idpromotor: this.votante[0].id_promotor, nombre: this.votante[0].vNombre, apellidos: this.votante[0].vApellidos
+            , telefono: this.votante[0].vTelefono, seccion: this.votante[0].vSeccion
+            , voto: this.votante[0].voto, traslado: this.votante[0].traslado
+          }
+        );
+
+
+        return;
+      });
+    
+  }
+
+  updateVotante() {
+    const votanteUpdate: PromovidoUpdateResponse = {
+      'id_promotor': this.myForm.get('idpromotor')?.value,
+      'id_promovido': this.votante[0].id_promovido,
+      'nombre': this.myForm.get('nombre')?.value,
+      'apellidos': this.myForm.get('apellidos')?.value,
       'telefono': this.myForm.get('telefono')?.value,
-      'domicilio': this.myForm.get('domicilio')?.value,
-      'refdomicilio': this.myForm.get('referenciadom')?.value,
-      "cve_colonia": Number(this.votante[0].colonia),
-      "seccion": this.myForm.get('seccion')?.value,
-      "observaciones" : this.votante[0].observaciones,
-      "traslado" : this.myForm.get('traslado')?.value,
-      "inefrente": this.votante[0].inefrente,
-      "ocr": this.votante[0].ocr,
-      "programas" : this.votante[0].programas,
-      'id_user':  Number( localStorage.getItem('idUsuario') ),
-      'operacion': 'C'
+      'seccion': this.myForm.get('seccion')?.value,
+      "voto": this.myForm.get('voto')?.value,
+      "traslado": this.myForm.get('traslado')?.value,
     };
 
-    this.structureService.UpdateVotanteById(votanteUpdate)
+    this.structureService.UpdateVotante(votanteUpdate)
     .subscribe({
-      next: () => {
+        next: () => {
           Swal.fire({
             icon: "success",
             title: "Actualizado",
@@ -104,11 +102,12 @@ export class VotantePageComponent {
         });
       }
     });
+
   }
 
   goBack(): void {
-
-    this.router.navigateByUrl(`dashboard/vlist/${this.urlId}`);
+    // this.router.navigateByUrl(`dashboard/vlist/${this.urlId}`);
+    this.router.navigateByUrl(`dashboard/vlist/${this.votante[0].id_promotor}`);
   }
 
 }

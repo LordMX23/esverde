@@ -40,7 +40,7 @@ export class CoordinadorPageComponent {
       ).subscribe( coordi => {
         if( !coordi ) return this.router.navigateByUrl('/');
           this.coordinador=coordi;
-          this.myForm.reset({nombre: this.coordinador[0].nombre ,telefono: this.coordinador[0].telefono });
+          //this.myForm.reset({nombre: this.coordinador[0].nombre ,telefono: this.coordinador[0].telefono });
         return;
       });
 
@@ -48,37 +48,38 @@ export class CoordinadorPageComponent {
 
   updateCoordinador()
   {
-    const coordUpdate: CoordinadorUpdate = {
-      'id_candidato': this.coordinador[0].idpadre,
-      'nombre': this.myForm.get('nombre')?.value,
-      'telefono': this.myForm.get('telefono')?.value,
-      'inefrente': this.coordinador[0].inefrente,
-      'ocr': this.coordinador[0].ocr,
-      'id_user': 1,
-      'operacion': 'C',
-      'id_coordinador': this.coordinador[0].id
+    // const coordUpdate: CoordinadorUpdate = {
+    //   'id_candidato': this.coordinador[0].idpadre,
+    //   'nombre': this.myForm.get('nombre')?.value,
+    //   'telefono': this.myForm.get('telefono')?.value,
+    //   'inefrente': this.coordinador[0].inefrente,
+    //   'ocr': this.coordinador[0].ocr,
+    //   'id_user': 1,
+    //   'operacion': 'C',
+    //   'id_coordinador': this.coordinador[0].id
 
-    };
+    // };
 
-    this.structureService.UpdateCoordinadorById(coordUpdate)
-    .subscribe({
-      next: () => {
-          Swal.fire({
-            icon: "success",
-            title: "Actualizado",
-            text: "Los datos del Coordinador se actualizaron",
-            footer: ''
-          });
-        },
-      error: (message) => {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: message,
-          footer: ''
-        });
-      }
-    });
+    
+    // this.structureService.UpdateCoordinadorById(coordUpdate)
+    // .subscribe({
+    //   next: () => {
+    //       Swal.fire({
+    //         icon: "success",
+    //         title: "Actualizado",
+    //         text: "Los datos del Coordinador se actualizaron",
+    //         footer: ''
+    //       });
+    //     },
+    //   error: (message) => {
+    //     Swal.fire({
+    //       icon: "error",
+    //       title: "Oops...",
+    //       text: message,
+    //       footer: ''
+    //     });
+    //   }
+    // });
   }
 
   goBack(): void {

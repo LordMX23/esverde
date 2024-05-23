@@ -1,0 +1,12 @@
+<h1> COORDINADOR MUNICIPAL: {{ this.miCoordinadorMunicipal }} </h1>
+<h2> Coordinadores de zona </h2>
+<mat-divider></mat-divider>
+<br><br>
+
+<div class="table-responsive">
+    <app-list-coordinadores-zona-table [coordinadoresZona]="coordinadoresZona"></app-list-coordinadores-zona-table>
+</div>
+
+<button mat-button color="warn" (click)="goBack()">
+    Regresar
+</button>

@@ -1,4 +1,4 @@
-    <apx-chart
+    <!-- <apx-chart
       [series]="chartOptions.series!"
       [chart]="chartOptions.chart!"
       [dataLabels]="chartOptions.dataLabels!"
@@ -9,4 +9,25 @@
       [colors]="chartOptions.colors!"
       [grid]="chartOptions.grid!"
       [title]="chartOptions.title!"
-    ></apx-chart>
+    ></apx-chart> -->
+
+    
+
+    
+    
+<ngx-charts-bar-vertical *ngIf="chartPartidoVotos"
+  [scheme]="colorScheme"
+  [results]="single"
+  [gradient]="gradient"
+  [xAxis]="showXAxis"
+  [yAxis]="showYAxis"
+  [legend]="showLegend"
+  [showXAxisLabel]="showXAxisLabel"
+  [showYAxisLabel]="showYAxisLabel"
+  [xAxisLabel]="xAxisLabel"
+  [yAxisLabel]="yAxisLabel"
+  (select)="onSelect($event)"
+  [legendTitle]="legendTitle"
+  [showDataLabel]="true"
+  >
+</ngx-charts-bar-vertical>

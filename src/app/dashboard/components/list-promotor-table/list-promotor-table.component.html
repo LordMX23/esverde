@@ -1,0 +1,48 @@
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+ 
+      <!-- Nombre Column -->
+    <ng-container matColumnDef="pNombre">
+        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+        <td mat-cell *matCellDef="let element"> {{element.pNombre}} </td>
+      </ng-container>
+  
+      <!-- Telefono Column -->
+      <ng-container matColumnDef="pTelefono">
+        <th mat-header-cell *matHeaderCellDef> Telefono </th>
+        <td mat-cell *matCellDef="let element"> {{element.pTelefono}} </td>
+      </ng-container>
+  
+      <!-- Seccion Column -->
+      <ng-container matColumnDef="pSeccion">
+        <th mat-header-cell *matHeaderCellDef> Seccion </th>
+        <td mat-cell *matCellDef="let element"> {{element.pSeccion}} </td>
+      </ng-container>
+  
+      <!-- Editar Column -->
+      <!-- <ng-container matColumnDef="editar">
+        <th mat-header-cell *matHeaderCellDef> Editar </th>
+        <td mat-cell *matCellDef="let element"><mat-icon color="primary">edit</mat-icon></td>
+      </ng-container> -->
+
+      <!-- Votantes Column -->
+      <ng-container matColumnDef="votante">
+        <th mat-header-cell *matHeaderCellDef> Votante </th>
+        <td mat-cell *matCellDef="let element" [routerLink]="['/dashboard/vlist', element.id_promotor]"> <mat-icon color="primary">search</mat-icon></td>
+      </ng-container>
+
+      <!-- Nombre Estructura -->
+    <ng-container matColumnDef="estructura">
+      <th mat-header-cell *matHeaderCellDef> Estructura </th>
+      <td mat-cell *matCellDef="let element" [routerLink]="['/dashboard/estructurapage',10, element.id_promotor]"> <mat-icon color="primary">search</mat-icon> </td>
+    </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[10, 20]"
+                   showFirstLastButtons
+                   aria-label="Select page of periodic elements">
+    </mat-paginator>
+  </div>
