@@ -22,6 +22,9 @@ export class StructureService {
 
     private readonly baseUrl: string = environment.baseUrl;
     private http = inject(HttpClient);
+    
+    public isLoadingEstructura: boolean = false;
+    public votantes: PromovidoResponse[] = [];
 
     constructor() { }
 
@@ -82,8 +85,6 @@ export class StructureService {
         );
     }
 
-
-
     // Actualiza Votante (Promovido)
     UpdateVotante( votante: PromovidoUpdateResponse){
         const url = `${this.baseUrl}/Registros/Promovido_Update`;
@@ -91,7 +92,7 @@ export class StructureService {
         const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
         const body = votante;
-        console.log(body);
+        console.log('body:', body);
 
         return this.http.post(url, body, { headers })
         .pipe(
@@ -101,7 +102,23 @@ export class StructureService {
             );
     }
 
+    // Trae votante para actualizar
+    getVotanteByName(name: string){
+        this.isLoadingEstructura = true;
+        
+        if(name.length===0){
+            name = 'zzzzzz';
+        }
+        const url = `${this.baseUrl}/Registros/GetEstructura?idTipo=6&IdPersona=0&texto=${name.toString()}`;
+        const token = localStorage.getItem('token');
+        const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
+        this.http.post<PromovidoResponse[]>(url,'', { headers })
+        .subscribe( response => {
+            this.isLoadingEstructura = false;
+            this.votantes = response
+        })
+    }
 
     // UpdateVotanteById( votante: PromovidoResponse)
     // {

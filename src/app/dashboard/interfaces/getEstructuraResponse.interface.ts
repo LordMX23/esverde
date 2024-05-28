@@ -30,5 +30,6 @@ export interface GetEstructuraResponse {
     vVoto:                    string;
     traslado:                 boolean | null;
     vTraslado:                string;
+    coloniaD:                 null | string;
 
 }

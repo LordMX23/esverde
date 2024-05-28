@@ -39,31 +39,37 @@ export class ListaEstructuraVotosComponent implements OnChanges {
   {
 
     const rows = this.Estructura.map(row => ({
-      C_Municipal: row.cmNombre,
-      CM_Telefono: row.cmTelefono,
-      C_Zona: row.czNombre,
-      CZ_Telefono: row.czTelefono,
-      CZ_Seccion: row.czSeccion,
-      C_Seccion: row.csNombre,
-      CS_Telefono: row.csTelefono,
-      CS_Seccion: row.csSeccion,
-      Promotor: row.pNombre,
-      P_Telefono: row.pTelefono,
-      P_Seccion: row.pSeccion,
-      Votante: row.vNombre,
-      V_Telefono: row.vTelefono,
-      V_Seccion: row.vSeccion,
-      V_Voto: row.vVoto,
-      V_Traslado: row.vTraslado,
+      'Coord. Municipal': row.cmNombre,
+      'Coord Municipal Telefono': row.cmTelefono,
+      'Coord. Zona': row.czNombre,
+      'Coord. Zona Telefono': row.czTelefono,
+      'Coord. Zona Seccion': row.czSeccion,
+      'Coord. Seccion': row.csNombre,
+      'Coord Seccion Telefono': row.csTelefono,
+      'Coord Seccion Seccion': row.csSeccion,
+      'Promotor': row.pNombre,
+      'Promotor Telefono': row.pTelefono,
+      'Promotor Seccion': row.pSeccion,
+      'Votante': row.vNombre,
+      'Votante Telefono': row.vTelefono,
+      'Votante Seccion': row.vSeccion,
+      'Votante Voto': row.vVoto,
+      'Votante Traslado': row.vTraslado,
+      'Votante Colonia': row.coloniaD
     }));
 
 
-    const workSheet = XLSX.utils.json_to_sheet(rows, {header:['C_Municipal', 'CM_Telefono','C_Zona','CZ_Telefono', 'CZ_Seccion'
-      ,'C_Seccion','CS_Telefono','CS_Seccion', 'Promotor', 'P_Telefono','P_Seccion'
-      ,'Votante', 'V_Telefono', 'V_Seccion','V_Voto', 'V_Traslado']});
+    const workSheet = XLSX.utils.json_to_sheet(rows, {header:[]});
     const workBook: XLSX.WorkBook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workBook, workSheet, 'Estructura');
     XLSX.writeFile(workBook, 'Estructura.xlsx');
+
+    // const workSheet = XLSX.utils.json_to_sheet(rows, {header:['C_Municipal', 'CM_Telefono','C_Zona','CZ_Telefono', 'CZ_Seccion'
+    //   ,'C_Seccion','CS_Telefono','CS_Seccion', 'Promotor', 'P_Telefono','P_Seccion'
+    //   ,'Votante', 'V_Telefono', 'V_Seccion','V_Voto', 'V_Traslado']});
+    // const workBook: XLSX.WorkBook = XLSX.utils.book_new();
+    // XLSX.utils.book_append_sheet(workBook, workSheet, 'Estructura');
+    // XLSX.writeFile(workBook, 'Estructura.xlsx');
 
 
 

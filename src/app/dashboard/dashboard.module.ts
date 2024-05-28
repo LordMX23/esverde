@@ -28,6 +28,9 @@ import { CoordinadorSeccionListPageComponent } from './pages/coordinador-seccion
 import { ListCoordinadoresSeccionTableComponent } from './components/list-coordinadores-seccion-table/list-coordinadores-seccion-table.component';
 import { PromotorListPageComponent } from './pages/promotor-list-page/promotor-list-page.component';
 import { ListPromotorTableComponent } from './components/list-promotor-table/list-promotor-table.component';
+import { BuscaVotantePageComponent } from './pages/busca-votante-page/busca-votante-page.component';
+import { VotanteSearchResultTableComponent } from './components/votante-search-result-table/votante-search-result-table.component';
+import { VotanteUpdateComponent } from './components/votante-update/votante-update.component';
 
 
 
@@ -55,7 +58,10 @@ import { ListPromotorTableComponent } from './components/list-promotor-table/lis
     CoordinadorSeccionListPageComponent,
     ListCoordinadoresSeccionTableComponent,
     PromotorListPageComponent,
-    ListPromotorTableComponent
+    ListPromotorTableComponent,
+    BuscaVotantePageComponent,
+    VotanteSearchResultTableComponent,
+    VotanteUpdateComponent
   ],
   imports: [
     CommonModule,

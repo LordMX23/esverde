@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col">
+        <hr>
+        <h2 style="text-align: center;">Resultados</h2>
+
+        <div *ngIf="isLoadingVotante"  class="alert alert-primary mt-2 text-center">
+            <h6>Cargando</h6>
+            <span>Espere por favor...</span>
+        </div>
+
+        <ul class="list-group mt-2" *ngIf="votantesResponse.length > 0">
+            <li *ngFor="let votante of votantesResponse" class="list-group-item list-group-item-action pointer"
+                (click)="getVotanteById(votante.id_promovido!)">
+                <!-- <h6>{{ votante.id_promovido}}</h6> -->
+                <h5>Seecion: {{votante.vSeccion}}. Votó: {{ votante.vVoto }}. Traslado: {{ votante.vTraslado}}</h5>
+                <div>
+                    <strong>{{ votante.vNombre }} {{ votante.vApellidos}}</strong>
+                    <button class="btn btn-sm ">
+                        <mat-icon color="primary">edit</mat-icon>
+                    </button>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+
+    <div class="col">
+        <app-votante-update [votante]="votante"></app-votante-update>
+    </div>
+
+</div>

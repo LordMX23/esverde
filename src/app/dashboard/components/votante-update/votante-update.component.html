@@ -1,16 +1,21 @@
-<!-- <form [formGroup]="myForm" (ngSubmit)="updateVotante()" class="container">
+<form [formGroup]="myForm" (ngSubmit)="updateVotante()" class="container">
 
     <hr>
-    <legend>Datos del Votate</legend>
+    <h2>Datos del Votate</h2>
 
     <mat-form-field class="form-control">
         <mat-label>Promotor</mat-label>
         <mat-select formControlName="idpromotor">
-            @for (promotor of catPromotores; track promotor) {
+          @for (promotor of catPromotores; track promotor) {
             <mat-option [value]="promotor.id">{{promotor.descripcion}}</mat-option>
-            }
+          }
         </mat-select>
-    </mat-form-field>
+      </mat-form-field>
+
+    <!-- <mat-form-field class="form-control">
+        <mat-label>Promotor</mat-label>
+        <input type="text" formControlName="promotor" matInput placeholder="Promotor">
+    </mat-form-field> -->
 
     <mat-form-field class="form-control">
         <mat-label>Nombre</mat-label>
@@ -32,6 +37,11 @@
         <input type="text" formControlName="seccion" matInput placeholder="Seccion">
     </mat-form-field>
 
+    <!-- <mat-form-field class="form-control">
+        <mat-label>Votó</mat-label>
+        <input type="text" formControlName="voto" matInput placeholder="Votó">
+    </mat-form-field> -->
+
     <section class="form-control">
         <mat-slide-toggle formControlName="voto" class="example-margin" [color]="color" [checked]="checked"
             [disabled]="disabled">
@@ -49,8 +59,4 @@
     <button mat-button mat-flat-button color="primary" [disabled]="myForm.invalid" type="submit">
         Guardar
     </button>
-</form> -->
-<app-votante-update [votante]="votante"></app-votante-update>
-<button mat-button color="warn" (click)="goBack()">
-    Regresar
-</button>
+</form>

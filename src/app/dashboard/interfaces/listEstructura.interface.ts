@@ -16,4 +16,5 @@ export interface ListaEstructura{
     vTelefono:                null | string;
     vVoto:                    string;
     vTraslado:                string;
+    coloniaD:                 null | string;
 }
