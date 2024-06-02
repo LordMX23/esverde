@@ -1,0 +1,43 @@
+<form [formGroup]="myForm" (ngSubmit)="createUser()" class="container">
+
+    <hr>
+    <h2>Datos del Usuario</h2>
+
+    <mat-form-field class="form-control">
+        <mat-label>Perfil</mat-label>
+        <mat-select formControlName="rolId">
+          @for (rol of catRoles; track rol) {
+            <mat-option [value]="rol.id">{{rol.descripcion}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+    <mat-form-field class="form-control">
+        <mat-label>Nombre</mat-label>
+        <input type="text" formControlName="nombre" matInput placeholder="Nombre">
+    </mat-form-field>
+
+    <mat-form-field class="form-control">
+        <mat-label>Paterno</mat-label>
+        <input type="text" formControlName="paterno" matInput placeholder="paterno">
+    </mat-form-field>
+
+    <mat-form-field class="form-control">
+        <mat-label>Materno</mat-label>
+        <input type="text" formControlName="materno" matInput placeholder="materno">
+    </mat-form-field>
+
+    <mat-form-field class="form-control">
+        <mat-label>Usuario</mat-label>
+        <input type="text" formControlName="nusuario" matInput placeholder="nusuario">
+    </mat-form-field>
+
+    <mat-form-field class="form-control">
+        <mat-label>Password</mat-label>
+        <input type="password" formControlName="password" matInput placeholder="password">
+    </mat-form-field>
+
+    <button mat-button mat-flat-button color="primary" [disabled]="myForm.invalid" type="submit">
+        Guardar
+    </button>
+</form>

@@ -7,6 +7,7 @@
         <mat-label>Usuario</mat-label>
         <input type="text" formControlName="usuario" matInput placeholder="Nombre de Usuario">
     </mat-form-field>
+    <span appCustomValidatorLabel [errors]="myForm.get('usuario')?.errors" [touched]="myForm.get('usuario')!.touched"></span>
 </div>
 
 
@@ -15,18 +16,31 @@
         <mat-label>Contraseña</mat-label>
         <input type="password" formControlName="password" matInput placeholder="Contraseña">
     </mat-form-field>
+    <span appCustomValidatorLabel [errors]="myForm.get('password')?.errors" [touched]="myForm.get('password')!.touched"></span>
 </div>
 
 
     <button mat-button 
         mat-flat-button color="primary"
-        [disabled]="myForm.invalid"
+        
         type="submit"
         >
         Ingresar
     </button>
 
+    <br><br>
+    <span>Pristine:</span>
+    <pre>{{ myForm.controls['usuario'].pristine }}</pre>
+
+    <span>Touched:</span>
+    <pre>{{ myForm.controls['usuario'].touched }}</pre>
+
+    <span>Errors:</span>
+    <pre>{{ myForm.get('usuario')?.errors | json}}</pre>
+
     
 
 
 </form>
+
+<!-- [disabled]="myForm.invalid" -->

@@ -15,6 +15,7 @@ import { CoordinadorZonaListPageComponent } from './pages/coordinador-zona-list-
 import { CoordinadorSeccionListPageComponent } from './pages/coordinador-seccion-list-page/coordinador-seccion-list-page.component';
 import { PromotorListPageComponent } from './pages/promotor-list-page/promotor-list-page.component';
 import { BuscaVotantePageComponent } from './pages/busca-votante-page/busca-votante-page.component';
+import { CreateUserPageComponent } from './pages/create-user-page/create-user-page.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,8 @@ const routes: Routes = [
       {path: 'rlist', canActivate: [isAuthenticatedGuard], component: ReportListPageComponent },
       // Busqueda de votante
       {path: 'busca', canActivate: [isAuthenticatedGuard], component: BuscaVotantePageComponent },
+      // Usurios
+      {path: 'cuser', canActivate: [isAuthenticatedGuard], component: CreateUserPageComponent },
 
       // YA NO
       {path: 'cpage/:id', canActivate: [isAuthenticatedGuard], component: CoordinadorPageComponent },

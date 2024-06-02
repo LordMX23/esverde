@@ -20,7 +20,7 @@ export class LoginPageComponent {
   private router      = inject( Router )
 
 
-  public myForm: FormGroup = this.fb.group({
+  public myForm: FormGroup = this.fb.nonNullable.group({
     usuario:    ['', [ Validators.required, Validators.minLength(3) ]],
     password: ['', [ Validators.required, Validators.minLength(6) ]],
   });
@@ -28,30 +28,38 @@ export class LoginPageComponent {
   login(){
     const { usuario, password } = this.myForm.value;
 
-    this.authService.login(usuario, password)
-      .subscribe({
-        next: bol => {
-          if(bol === false){
-            Swal.fire({
-              icon: "error",
-              title: "Oops...",
-              text: "Contraseña incorrecta o acceso denegado",
-              footer: ''
-            });
-          }
-          if(bol === true){
-            this.router.navigateByUrl('/dashboard')
-          }
-          },
-        error: (message) => {
-          Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: message,
-            footer: ''
-          });
-        }
-      })
+    if (this.myForm.invalid) {
+      this.myForm.markAllAsTouched();
+      return;
+    }
+
+    this.myForm.reset();
+    
+
+    // this.authService.login(usuario, password)
+    //   .subscribe({
+    //     next: bol => {
+    //       if(bol === false){
+    //         Swal.fire({
+    //           icon: "error",
+    //           title: "Oops...",
+    //           text: "Contraseña incorrecta o acceso denegado",
+    //           footer: ''
+    //         });
+    //       }
+    //       if(bol === true){
+    //         this.router.navigateByUrl('/dashboard')
+    //       }
+    //       },
+    //     error: (message) => {
+    //       Swal.fire({
+    //         icon: "error",
+    //         title: "Oops...",
+    //         text: message,
+    //         footer: ''
+    //       });
+    //     }
+    //   })
 
   }
 

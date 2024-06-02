@@ -8,6 +8,7 @@ import { MaterialModule } from '../material/material.module';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { LayoutPageComponent } from './pages/layout-page/layout-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -20,7 +21,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     AuthRoutingModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class AuthModule { }

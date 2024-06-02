@@ -15,6 +15,8 @@ import { GetPartidoVotosSeccionResponse } from '../interfaces/get-partido-votos-
 import { GetEstructuraResponse } from '../interfaces/getEstructuraResponse.interface';
 import { GetCatalogoResponse } from '../interfaces/getCatalogoResponse.interface';
 import { PromovidoUpdateResponse } from '../interfaces/promovidoUpdateResponse.interface';
+import { UserCreate } from '../interfaces/user-create.interface';
+import { UserCreateResponse } from '../interfaces/user-create-response.interface';
 
 
 @Injectable({providedIn: 'root'})
@@ -27,6 +29,23 @@ export class StructureService {
     public votantes: PromovidoResponse[] = [];
 
     constructor() { }
+
+    //Crea Usuario
+    CreateUser( user: UserCreate): Observable<UserCreateResponse[]>{
+        const url = `${this.baseUrl}/Registros/RegistroUsuarioApp`;
+        const token = localStorage.getItem('token');
+        const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+        const body = user;
+
+        return this.http.post<UserCreateResponse[]>(url, body, { headers })
+        .pipe(
+                catchError((error) => {
+                    throw `Error: ${error.toString()}`;
+                })
+            );
+    }
+
 
     // Total de miembros registrados y cuantos han votado
     getVotanteTotalVotos(): Observable<VotanteTotalVotos[]>{
@@ -92,7 +111,6 @@ export class StructureService {
         const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
         const body = votante;
-        console.log('body:', body);
 
         return this.http.post(url, body, { headers })
         .pipe(
@@ -119,6 +137,14 @@ export class StructureService {
             this.votantes = response
         })
     }
+
+
+
+
+////////////////////////////////
+
+
+
 
     // UpdateVotanteById( votante: PromovidoResponse)
     // {

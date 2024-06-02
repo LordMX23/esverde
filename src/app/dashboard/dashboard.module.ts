@@ -31,6 +31,9 @@ import { ListPromotorTableComponent } from './components/list-promotor-table/lis
 import { BuscaVotantePageComponent } from './pages/busca-votante-page/busca-votante-page.component';
 import { VotanteSearchResultTableComponent } from './components/votante-search-result-table/votante-search-result-table.component';
 import { VotanteUpdateComponent } from './components/votante-update/votante-update.component';
+import { CreateUserPageComponent } from './pages/create-user-page/create-user-page.component';
+import { UserCreateComponent } from './components/user-create/user-create.component';
+import { BooleanPipePipe } from './pipe/boolean-pipe.pipe';
 
 
 
@@ -61,7 +64,10 @@ import { VotanteUpdateComponent } from './components/votante-update/votante-upda
     ListPromotorTableComponent,
     BuscaVotantePageComponent,
     VotanteSearchResultTableComponent,
-    VotanteUpdateComponent
+    VotanteUpdateComponent,
+    CreateUserPageComponent,
+    UserCreateComponent,
+    BooleanPipePipe
   ],
   imports: [
     CommonModule,

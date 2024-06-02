@@ -33,6 +33,12 @@
             <td mat-cell *matCellDef="let element"> {{element.czSeccion}} </td>
           </ng-container>
 
+          <!-- C.Z. Voto -->
+        <ng-container matColumnDef="czVoto">
+          <th mat-header-cell *matHeaderCellDef> C.Z. Voto </th>
+          <td mat-cell *matCellDef="let element"> {{element.czVoto | booleanPipe}} </td>
+        </ng-container>
+
           <!-- C. Seccion-->
         <ng-container matColumnDef="csNombre">
           <th mat-header-cell *matHeaderCellDef> C. Seccion </th>
@@ -51,6 +57,12 @@
             <td mat-cell *matCellDef="let element"> {{element.csSeccion}} </td>
           </ng-container>
 
+          <!-- C.S. Voto -->
+        <ng-container matColumnDef="csVoto">
+          <th mat-header-cell *matHeaderCellDef> C.S. Voto </th>
+          <td mat-cell *matCellDef="let element"> {{element.csVoto | booleanPipe}} </td>
+        </ng-container>
+
           <!-- Promotor-->
         <ng-container matColumnDef="pNombre">
           <th mat-header-cell *matHeaderCellDef> Promotor </th>
@@ -68,6 +80,12 @@
             <th mat-header-cell *matHeaderCellDef>P. Seccion </th>
             <td mat-cell *matCellDef="let element"> {{element.pSeccion}} </td>
           </ng-container>
+
+        <!-- P. Voto -->
+        <ng-container matColumnDef="pVoto">
+          <th mat-header-cell *matHeaderCellDef> P. Voto </th>
+          <td mat-cell *matCellDef="let element"> {{element.pVoto | booleanPipe}} </td>
+        </ng-container>
 
           <!-- Votante-->
         <ng-container matColumnDef="vNombre">

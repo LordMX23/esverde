@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import * as XLSX from 'xlsx';
 import { GetEstructuraResponse } from '../../interfaces/getEstructuraResponse.interface';
 import { ListaEstructura } from '../../interfaces/listEstructura.interface';
+import { BooleanPipePipe } from '../../pipe/boolean-pipe.pipe';
 
 @Component({
   selector: 'app-lista-estructura-votos',
@@ -19,7 +20,7 @@ export class ListaEstructuraVotosComponent implements OnChanges {
 
 
 
-  displayedColumns: string[] = ['cmNombre', 'cmTelefono', 'czNombre', 'czTelefono', 'czSeccion','csNombre','csTelefono','csSeccion', 'pNombre','pTelefono','pSeccion','vNombre','vSeccion','vTelefono','vVoto'];
+  displayedColumns: string[] = ['cmNombre', 'cmTelefono', 'czNombre', 'czTelefono', 'czSeccion','czVoto','csNombre','csTelefono','csSeccion','csVoto', 'pNombre','pTelefono','pSeccion','pVoto','vNombre','vSeccion','vTelefono','vVoto'];
   dataSource: MatTableDataSource<ListaEstructura>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   fileName= 'ExcelSheet.xlsx';
@@ -44,12 +45,15 @@ export class ListaEstructuraVotosComponent implements OnChanges {
       'Coord. Zona': row.czNombre,
       'Coord. Zona Telefono': row.czTelefono,
       'Coord. Zona Seccion': row.czSeccion,
+      'Coord. Zona Voto': row.czVoto,
       'Coord. Seccion': row.csNombre,
       'Coord Seccion Telefono': row.csTelefono,
       'Coord Seccion Seccion': row.csSeccion,
+      'Coord Seccion Voto': row.csVoto,
       'Promotor': row.pNombre,
       'Promotor Telefono': row.pTelefono,
       'Promotor Seccion': row.pSeccion,
+      'Promotor Voto': row.pVoto,
       'Votante': row.vNombre,
       'Votante Telefono': row.vTelefono,
       'Votante Seccion': row.vSeccion,
